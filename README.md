@@ -1,13 +1,14 @@
 # vue-blog-ui
+[![Build Status](https://travis-ci.org/lexmartinez/vue-blog-ui.svg?branch=master)](https://travis-ci.org/lexmartinez/vue-blog-ui)
 [![NodeJS version](https://img.shields.io/badge/node-v7.10.1-green.svg)](https://nodejs.org/es/)
 [![NPM version](https://img.shields.io/badge/npm-v4.2.0-red.svg)](https://www.npmjs.com/)
-[![VueJS version](https://img.shields.io/badge/VueJS-v2.9.1-green.svg)](https://vuejs.org/)
+[![vueJS version](https://img.shields.io/badge/vueJS-v2.9.1-green.svg)](https://vuejs.org/)
 [![GitHub license](https://img.shields.io/github/license/lexmartinez/vue-blog-ui.svg)](https://github.com/lexmartinez/vue-blog-ui/blob/master/LICENSE.md)
 [![Last version](https://img.shields.io/badge/vue--blog--ui-v1.0.0-lightgrey.svg)](https://github.com/lexmartinez/vue-blog-ui/blob/master/CHANGELOG.md)
 <br/><br/>
 :boat: A blogging client UI built on VueJS <br/>
 
-Simple and powerful blogging site, created as VueJS study case with with purpose to be my website/blog using [hapi-blog](https://github.com/lexmartinez/hapi-blog) as core enine.
+Simple and powerful blogging site, created as VueJS study case with with purpose to be my website/blog using [hapi-blog](https://github.com/lexmartinez/hapi-blog) as core engine.
 
 
 ### Quick start
@@ -54,7 +55,7 @@ go to [http://localhost:8080](http://localhost:8080) in your browser.
  `vue-blog-ui` has an [ESLint](https://eslint.org/) integration for consistent code inspection, you can run that tool with command:
  
  * `npm test`
-
+ 
 ## Production
 
 In order to generate a dist bundle you can use the following commands:
@@ -68,6 +69,10 @@ npm run build --report
 ```
 
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+
+ ## Deployment
+  
+This app is ready to be deployed to github pages through TravisCI (using the .travis.yml file) you just need to create the github repo and setup the github key on travisCI
 
 ## License
 
