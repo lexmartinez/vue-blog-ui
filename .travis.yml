@@ -2,7 +2,7 @@ language: node_js
 node_js:
   - "7"
 before_install:
-  - chmod +x build.sh
+  - chmod +x deploy.sh
 before_script:
   - npm install
 script:
