@@ -12,6 +12,7 @@ commit_website_files() {
 
 upload_files() {
   git remote add origin https://${GH_TOKEN}@${GH_REPO_TARGET} > /dev/null 2>&1
+  git pull
   git push --quiet --set-upstream origin master
 }
 
