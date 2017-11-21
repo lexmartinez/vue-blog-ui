@@ -2,7 +2,7 @@
   <div>
     <!-- Header -->
     <header id="header">
-      <h1><a href="#">Lex Mart&iacute;nez</a></h1>
+      <h1><router-link :to="'/'">Lex Mart&iacute;nez</router-link></h1>
       <nav class="links">
         <ul>
           <!--<li><a href="#">About Me</a></li>-->

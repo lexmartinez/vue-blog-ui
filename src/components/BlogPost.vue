@@ -1,21 +1,27 @@
 <template>
   <transition name="post">
-    <article v-if="post" class="post">
-      <header class="post__header">
-        <h2 class="post__title">{{ title }}</h2>
-
-        <h3 class="post__meta">by <router-link class="post__author"
-          :to="`/by/${author}`">{{ author }}</router-link>
-          <span class="post__sep"></span>
-          <time>{{ published }}</time>
-        </h3>
-
-        <blockquote class="post__subtitle">{{ description }}</blockquote>
+    <article class="post" v-if="post && article">
+      <header>
+        <div class="title">
+          <h2>{{ article.title }}</h2>
+          <p v-if="article.author">By <strong>{{article.author.name}}</strong> &lt;&#064;{{article.author.alias}}&gt;</p>
+        </div>
+        <div class="meta">
+          <div class="date">
+            <div class=" ">{{article.publishedAt | moment("MMMM")}}</div>
+            <div class="day">{{article.publishedAt | moment("DD")}}</div>
+          </div>
+        </div>
       </header>
-
-      <section class="post__body rte" v-html="content"></section>
-
-      <footer class="post__footer">
+      <footer style="width:100%; height: 20px">
+        <ul class="stats">
+          <li>Tags: </li>
+          <li v-for="tag in article.tags"><a href="#">{{tag.name}}</a></li>
+        </ul>
+      </footer>
+      <p style="text-align: justify">{{article.abstract}}</p>
+      <p><vue-markdown :source="article.content"></vue-markdown></p>
+      <footer>
 
       </footer>
     </article>
@@ -23,20 +29,18 @@
 </template>
 
 <script>
+import axios from 'axios'
+import VueMarkdown from 'vue-markdown'
 
 export default {
   name: 'blog-post',
   resource: 'BlogPost',
-  components: {},
+  components: {VueMarkdown},
   props: { post: String },
 
   data () {
     return {
-      title: '',
-      author: '',
-      content: '',
-      published: '',
-      description: '',
+      article: {},
       commentsReady: false
     }
   },
@@ -46,8 +50,6 @@ export default {
       if (to === from || !this.post) return
 
       this.commentsReady = false
-      this.$getResource('post', to)
-        .then(this.showComments)
     }
   },
 
@@ -60,7 +62,16 @@ export default {
   },
 
   beforeMount () {
-    console.log('assaas')
+    if (this.post) {
+      axios.get('https://hapi-blog.herokuapp.com/v1/articles?key=' + this.post)
+        .then(response => {
+          this.article = response.data
+          this.showComments()
+        })
+        .catch(e => {
+          this.showErrorMsg({message: '... we got problems fetching the articles', title: 'Uh oh!', timeout: 5000})
+        })
+    }
   }
 }
 </script>

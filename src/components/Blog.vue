@@ -1,8 +1,8 @@
 <template>
   <main class="blog" :class="{ 'blog--reading': this.post }">
     <blog-nav :content="content" :filters="filters" :navs="navs"/>
-    <blog-feed :filters="filters"/>
-    <blog-post :post="post"/>
+    <blog-feed :filters="filters" v-if="!post"/>
+    <blog-post :post="post" v-if="post"/>
     <blog-footer/>
   </main>
 </template>

@@ -4,23 +4,26 @@
     <article class="post" v-for="post in posts">
       <header>
         <div class="title">
-          <h2><a href="#">{{post.title}}</a></h2>
-          <p>By <strong>JANE DOE</strong> &lt;&#064;janedoe&gt;</p>
+          <h2>
+            <router-link :to="`/read/${post.key}`">{{ post.title }}</router-link>
+          </h2>
+          <p v-if="post.author">By <strong>{{post.author.name}}</strong> &lt;&#064;{{post.author.alias}}&gt;</p>
         </div>
         <div class="meta">
           <div class="date">
-            <div class=" ">August</div>
-            <div class="day">28</div>
+            <div class=" ">{{post.publishedAt | moment("MMMM")}}</div>
+            <div class="day">{{post.publishedAt | moment("DD")}}</div>
           </div>
         </div>
       </header>
-      <p>Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod placerat. Vivamus porttitor magna enim, ac accumsan tortor cursus at. Phasellus sed ultricies mi non congue ullam corper. Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
+      <p style="text-align: justify">{{post.abstract}}</p>
       <footer>
         <ul class="actions">
-          <li><a href="#" class="button big">Continue Reading</a></li>
+          <li> <router-link :to="`/read/${post.key}`" class="button big">Continue Reading</router-link></li>
         </ul>
         <ul class="stats">
-          <li><a href="#">General</a></li>
+          <li>Tags: </li>
+          <li v-for="tag in post.tags"><a href="#">{{tag.name}}</a></li>
           <li><a href="#" class="icon fa-heart">28</a></li>
           <li><a href="#" class="icon fa-comment">128</a></li>
         </ul>
@@ -50,9 +53,7 @@ export default {
 
   data () {
     return {
-      posts: [],
-      errors: [],
-      transition: 'preview-appear'
+      posts: []
     }
   },
 

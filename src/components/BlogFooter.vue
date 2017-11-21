@@ -8,7 +8,7 @@
         <li><a href="#" class="fa-rss" target="_blank"><span class="label">RSS</span></a></li>
         <li><a href="mailto:lex0316@gmail.com" class="fa-envelope" target="_blank"><span class="label">Email</span></a></li>
       </ul>
-      <p class="copyright">Copyright &copy; 2017 Lex Mart&iacute;nez</p>
+      <p class="copyright">Copyright &copy; 2017 Arlex D. Mart&iacute;nez</p>
     </section>
 
   </section>

@@ -16,5 +16,6 @@ const options = {
 }
 
 Vue.use(VueNotifications, options)
+Vue.use(require('vue-moment-jalaali'))
 
 export { default } from './Blog'
