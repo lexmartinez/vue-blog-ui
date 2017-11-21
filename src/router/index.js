@@ -1,15 +1,25 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
+import Blog from '../components'
 
 Vue.use(Router)
 
 export default new Router({
-  routes: [
-    {
-      path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
-    }
-  ]
+  mode: 'history',
+  linkActiveClass: 'active',
+  routes: [{
+    path: '/',
+    name: 'feed',
+    component: Blog
+  }, {
+    path: '/tag/:tag',
+    name: 'tag',
+    props: true,
+    component: Blog
+  }, {
+    path: '/read/:post',
+    name: 'post',
+    props: true,
+    component: Blog
+  }]
 })

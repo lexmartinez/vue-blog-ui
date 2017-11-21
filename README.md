@@ -77,3 +77,5 @@ This app is ready to be deployed to github pages through TravisCI (using the .tr
 ## License
 
 This project is licensed under MIT License - see the [LICENSE.md](https://github.com/lexmartinez/vue-blog-ui/blob/master/LICENSE.md) file for details
+
+> Special thanks to this (SnipCart article)[https://snipcart.com/blog/vuejs-blog-demo], was a big lighthouse for start this project and it's structure
