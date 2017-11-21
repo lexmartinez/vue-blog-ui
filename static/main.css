@@ -3450,3 +3450,9 @@
 .date .month{
   font-weight: 700;
 }
+
+@media screen and (max-width: 480px) {
+  .mob-padd {
+    padding-top:50px !important;
+  }
+}
