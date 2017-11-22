@@ -5,8 +5,8 @@ setup_git() {
 }
 
 commit_website_files() {
-  mv /static/404.html ./
-  mv /static/.nojekyll ./
+  mv ./static/404.html ./
+  touch .nojekyll
   git init
   git add -A
   git commit --message "Travis build: $TRAVIS_BUILD_NUMBER"
