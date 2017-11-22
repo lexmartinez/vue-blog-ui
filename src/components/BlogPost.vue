@@ -1,5 +1,7 @@
 <template>
-  <transition name="post">
+  <div>
+    <blog-nav :content="content" :filters="filters" :navs="navs"/>
+    <transition name="post">
     <article class="post" v-if="post && article">
       <header>
         <div class="title">
@@ -26,16 +28,20 @@
       </footer>
     </article>
   </transition>
+    <blog-footer/>
+  </div>
 </template>
 
 <script>
 import axios from 'axios'
 import VueMarkdown from 'vue-markdown'
+import BlogNav from './BlogNav'
+import BlogFooter from './BlogFooter'
 
 export default {
   name: 'blog-post',
   resource: 'BlogPost',
-  components: {VueMarkdown},
+  components: {VueMarkdown, BlogNav, BlogFooter},
   props: { post: String },
 
   data () {
