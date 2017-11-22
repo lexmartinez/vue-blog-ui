@@ -42,7 +42,7 @@
           <h1>About Me</h1>
         </header>
         <p style="text-align: center">
-          Hi, I'm Arlex Mart&iacute;nez!<br/> Front-end Developer at Batteries911. JavaScript Surfer. NodeJS lover. Focused on web technologies.
+          Hi, I'm Arlex Mart&iacute;nez! <strong>@lexmartinez</strong><br/> Front-end Developer at Batteries911. JavaScript Surfer. NodeJS lover. Focused on web technologies.
           <br/>Author this blog. Guitar enthusiast 🤘
         </p>
         <p style="text-align: center">Find me on <a class="fa fa-github-alt" href="https://github.com/lexmartinez" target="_blank"></a> and <a class="fa fa-twitter" href="https://twitter.com/lex0316" target="_blank"></a>, DMs are open!</p>
