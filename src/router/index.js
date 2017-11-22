@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Blog from '../components'
-import BlogPost from '../components/BlogPost.vue'
 
 Vue.use(Router)
 
@@ -23,6 +22,6 @@ export default new Router({
     path: '/read/:post',
     name: 'post',
     props: true,
-    component: BlogPost
+    component: Blog
   }]
 })
