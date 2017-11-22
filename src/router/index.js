@@ -12,11 +12,13 @@ export default new Router({
     name: 'feed',
     component: Blog
   }, {
-    path: '/tag/:tag',
-    name: 'tag',
-    props: true,
-    component: Blog
-  }, {
+  //
+  //   path: '/tag/:tag',
+  //   name: 'tag',
+  //   props: true,
+  //   component: Blog
+  // },
+  //  {
     path: '/read/:post',
     name: 'post',
     props: true,

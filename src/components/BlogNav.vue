@@ -2,7 +2,8 @@
   <div>
     <!-- Header -->
     <header id="header">
-      <h1><router-link :to="'/'">Lex Mart&iacute;nez</router-link></h1>
+      <h1><router-link :to="'/'">Lex Mart&iacute;nez</router-link>
+      </h1>
       <nav class="links">
         <ul>
           <!--<li><a href="#">About Me</a></li>-->
@@ -21,66 +22,33 @@
             <!--</form>-->
           <!--</li>-->
           <li>
-            <a class="fa-user-circle-o" href="/about">About Me</a>
-          </li>
-          <li>
             <a class="fa-twitter" href="https://twitter.com/lex0316" target="_blank">Twitter</a>
           </li>
           <li>
             <a class="fa-github-alt" href="https://github.com/lexmartinez" target="_blank">Github</a>
           </li>
+          <li>
+            <a class="fa-user-circle-o" @click="modal = !modal">About Me</a>
+          </li>
         </ul>
       </nav>
     </header>
 
-    <!-- Menu -->
-    <section id="menu">
+    <div class="about-overlay" v-if="modal" @click="modal = !modal" >
+      <div class="about-wrapper">
+        <img src="https://avatars3.githubusercontent.com/u/17863319?s=460&v=4" class="about-avatar"/>
+        <br/>
+        <header style="text-align: center">
+          <h1>About Me</h1>
+        </header>
+        <p style="text-align: center">
+          Hi, I'm Arlex Mart&iacute;nez!<br/> Front-end Developer at Batteries911. JavaScript Surfer. NodeJS lover. Focused on web technologies.
+          <br/>Author this blog. Guitar enthusiast 🤘
+        </p>
+        <p style="text-align: center">Find me on <a class="fa fa-github-alt" href="https://github.com/lexmartinez" target="_blank"></a> and <a class="fa fa-twitter" href="https://twitter.com/lex0316" target="_blank"></a>, DMs are open!</p>
 
-      <!-- Search -->
-      <section>
-        <form class="search" method="get" action="#">
-          <input type="text" name="query" placeholder="Search" />
-        </form>
-      </section>
-
-      <!-- Links -->
-      <section>
-        <ul class="links">
-          <li>
-            <a href="#">
-              <h3>Lorem ipsum</h3>
-              <p>Feugiat tempus veroeros dolor</p>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <h3>Dolor sit amet</h3>
-              <p>Sed vitae justo condimentum</p>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <h3>Feugiat veroeros</h3>
-              <p>Phasellus sed ultricies mi congue</p>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <h3>Etiam sed consequat</h3>
-              <p>Porta lectus amet ultricies</p>
-            </a>
-          </li>
-        </ul>
-      </section>
-
-      <!-- Actions -->
-      <section>
-        <ul class="actions vertical">
-          <li><a href="#" class="button big fit">Log In</a></li>
-        </ul>
-      </section>
-
-    </section>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -94,6 +62,9 @@ export default {
       type: Object,
       default: () => {}
     }
+  },
+  data: () => {
+    return {modal: false}
   }
 }
 </script>

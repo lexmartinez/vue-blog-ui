@@ -3456,3 +3456,38 @@
     padding-top:50px !important;
   }
 }
+
+
+.about-overlay {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  display: block;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(250,250,250,0.85);
+  z-index: 2;
+  cursor: pointer;
+}
+
+.about-avatar{
+  border-radius: 100%;
+  display: block;
+  width: 16em;
+  height: 16em;
+  -webkit-filter: grayscale(50%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(50%);
+  position: relative;
+  left: 50%;
+  margin-left: -8em;
+}
+
+.about-wrapper{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}

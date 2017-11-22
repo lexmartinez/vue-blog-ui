@@ -50,6 +50,11 @@
     watch: {
       '$route.name' (to, from) {
         if (to !== from) this.navs++
+      },
+      post: (newVal) => {
+        if (newVal === undefined) {
+          document.title = 'Lex Mart\u00EDnez'
+        }
       }
     }
   }

@@ -18,20 +18,19 @@
       </header>
       <p style="text-align: justify">{{post.abstract}}</p>
       <footer>
-        <ul class="actions">
-          <li> <router-link :to="`/read/${post.key}`" class="button big">Continue Reading</router-link></li>
-        </ul>
-        <ul class="stats">
-          <li>Tags: </li>
+        <ul class="stats" style="width:100%">
+          <li><i class="fa fa-tag"></i> Tags: </li>
           <li v-for="tag in post.tags"><a href="#">{{tag.name}}</a></li>
-          <li><a href="#" class="icon fa-heart">28</a></li>
-          <li><a href="#" class="icon fa-comment">128</a></li>
+          <li v-if="post.likes"><a href="#" class="icon fa-thumbs-up fa-lg">{{post.likes}}</a></li>
+        </ul>
+        <ul class="actions" style="float:right !important;">
+          <li> <router-link :to="`/read/${post.key}`" class="button big">Continue Reading</router-link></li>
         </ul>
       </footer>
     </article>
       <ul class="actions pagination">
         <li><a href="" class="disabled button big previous">Previous Page</a></li>
-        <li><a href="#" class="button big next">Next Page</a></li>
+        <li><a href="#" class="button big next disabled">Next Page</a></li>
       </ul>
     </div>
   </div>
@@ -71,9 +70,12 @@ export default {
       type: VueNotifications.types.error
     }
   },
-
   created () {
-    axios.get(`https://hapi-blog.herokuapp.com/v1/articles`)
+    let url = 'https://hapi-blog.herokuapp.com/v1/articles'
+    if (this.filters && this.filters.tag) {
+      url = `https://hapi-blog.herokuapp.com/v1/articles?tag=${this.filters.tag}`
+    }
+    axios.get(url)
       .then(response => {
         this.posts = response.data
       })
