@@ -113,9 +113,9 @@ export default {
           document.title = this.article.title + ' <@' + this.article.author.alias + '>'
           document.head.querySelector('meta[name=description]').content = this.article.abstract
           document.head.querySelector('meta[property="og:title"]').content = this.article.title
+          document.head.querySelector('meta[property="og:url"]').content = 'https://lexmartinez.github.io/read/' + this.article.key
           document.head.querySelector('meta[name="twitter:title"]').content = this.article.title
           document.head.querySelector('meta[name="twitter:description"]').content = this.article.abstract
-          document.head.querySelector('meta[property="og:url"]').content = 'https://lexmartinez.github.io/read/' + this.article.key
           this.$Progress.finish()
         })
         .catch(e => {
