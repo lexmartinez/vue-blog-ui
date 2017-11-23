@@ -3512,4 +3512,8 @@
     float: none;
     margin-top:20px !important;
   }
+
+  .image.featured{
+    padding-bottom:20px !important;
+  }
 }
