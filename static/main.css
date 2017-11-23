@@ -3496,6 +3496,14 @@
   float: right;
 }
 
+.author-popover{
+  padding:15px !important;
+  padding-top:55px !important;
+  text-align: left;
+  min-height: 10px;
+  height: 10px;
+}
+
 @media screen and (max-width: 480px) {
   .about-avatar {
     width: 10em;
@@ -3516,4 +3524,73 @@
   .image.featured{
     padding-bottom:20px !important;
   }
+}
+
+
+:root {
+  --fir-font-article: "adobe-garamond-pro", "Times New Roman", Times;
+  --fir-font-header: "foco", Helvetica;
+  --fir-blue-twitter-alpha: rgba(85,172,238, 0.6);
+  --fir-color-grey: rgba(0,0,0, 0.40);
+}
+
+.fir-clickcircle {
+  height: 80px;
+  width: 80px;
+  border-radius: 100px;
+  cursor: pointer;
+}
+
+.fir-image-figure {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  margin-bottom: 40px;
+  position: relative;
+  text-decoration: none;
+}
+
+.fir-image-figure .caption, .fir-image-figure figcaption {
+  padding-left: 10px;
+}
+
+html.wf-active .fir-image-figure .fig-author-figure-title {
+  font-family: var(--fir-font-header);
+  font-size: 12px;
+}
+
+.fir-image-figure .fig-author-figure-title {
+  color: var(--fir-color-grey);
+  font-weight: 400;
+  font-size: 10px;
+  margin-top: 2px;
+  line-height: 15px;
+}
+
+.fir-imageover {
+  position: relative;
+  display: flex;
+}
+
+.fir-imageover-color {
+  height: 80px;
+  width: 80px;
+  position: absolute;
+  background: var(--fir-blue-twitter-alpha);
+  background-image: none;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: background .3s ease-in-out;
+  animation: fadeInFadeOut 2s infinite;
+  top: 0;
+  left: 0;
+}
+
+.popper {
+  max-width: 300px;
+  height: auto !important;
+  border-radius: 1px !important;
+  -webkit-box-shadow: rgb(58, 58, 58) 0 0 0 0 !important;
+  box-shadow: rgb(58, 58, 58) 0 0 0 0 !important;
+  font-size: 10pt;
 }

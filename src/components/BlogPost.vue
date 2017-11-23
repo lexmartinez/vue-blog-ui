@@ -4,7 +4,26 @@
       <header>
         <div class="title">
           <h2>{{ article.title }}</h2>
-          <p v-if="article.author">By <strong>{{article.author.name}}</strong> &lt;&#064;{{article.author.alias}}&gt;
+          <p v-if="article.author">
+
+            <popper trigger="click" :options="{placement: 'bottom'}">
+              <div class="popper">
+                <figure class="fir-image-figure author-popover">
+                    <img class="fir-author-image fir-clickcircle" :src="article.author.avatar" :alt="article.author.name">
+                  <figcaption>
+                    <div class="fig-author-figure-title"><strong>{{article.author.name}}</strong></div>
+                    <div class="fig-author-figure-title">{{article.author.bio}}</div>
+                    <div class="fig-author-figure-title" style="text-align: right;" v-if="article.author.github && article.author.twitter">
+                      <a :href="article.author.twitter" v-if="article.author.twitter"><i class="fa fa-twitter fa-2x"></i></a>
+                      <a :href="article.author.github" v-if="article.author.github"><i class="fa fa-github fa-2x"></i></a>
+                    </div>
+                  </figcaption>
+                </figure>
+              </div>
+              <span slot="reference" style="cursor: pointer">
+                By <strong>{{article.author.name}}</strong> &lt;&#064;{{article.author.alias}}&gt;
+              </span>
+            </popper>
           <span class="sharebox">
             <social-sharing :url="'https://lexmartinez.github.io/read/'+article.key"
                             :title="article.title"
@@ -57,11 +76,13 @@
 import axios from 'axios'
 import VueMarkdown from 'vue-markdown'
 import VueDisqus from 'vue-disqus/VueDisqus.vue'
+import Popper from 'vue-popperjs'
+import 'vue-popperjs/dist/css/vue-popper.css'
 
 export default {
   name: 'blog-post',
   resource: 'BlogPost',
-  components: {VueMarkdown, VueDisqus},
+  components: {VueMarkdown, VueDisqus, popper: Popper},
   props: { post: String },
 
   data () {
