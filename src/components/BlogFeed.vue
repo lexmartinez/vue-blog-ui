@@ -7,7 +7,26 @@
           <h2>
             <router-link :to="`/read/${post.key}`">{{ post.title }}</router-link>
           </h2>
-          <p v-if="post.author">By <strong>{{post.author.name}}</strong> &lt;&#064;{{post.author.alias}}&gt;</p>
+          <p v-if="post.author">By <strong>{{post.author.name}}</strong> &lt;&#064;{{post.author.alias}}&gt;
+            <span class="sharebox">
+            <social-sharing :url="'https://lexmartinez.github.io/read/'+post.key"
+                            :title="post.title"
+                            :quote="post.title"
+                            :description="post.title"
+                            twitter-user="lex0316"
+                            inline-template>
+              <div>
+                Share :
+                <network network="facebook">
+                  <span class="button big"><i class="fa fa-lg fa-facebook"></i></span>
+                </network>
+                <network network="twitter">
+                  <span class="button big"><i class="fa fa-lg fa-twitter"></i></span>
+                </network>
+              </div>
+            </social-sharing>
+            </span>
+          </p>
         </div>
         <div class="meta">
           <div class="date">
