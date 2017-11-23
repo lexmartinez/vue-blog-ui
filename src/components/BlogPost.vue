@@ -35,7 +35,7 @@
       <div class="image featured" v-if="article.imageUrl">
         <img :src="article.imageUrl"/>
       </div>
-      <footer style="width:100%; height: 20px; margin-top: -20px" v-if="article.tags.length">
+      <footer style="width:100%; height: 20px; margin-top: -20px" v-if="article.tags && article.tags.length">
         <ul class="stats mob-padd" style="width:100%; height: 20px">
           <li>Tags: </li>
           <li v-for="tag in article.tags"><a href="#">#{{tag.name}}</a></li>
@@ -91,6 +91,7 @@ export default {
     if (this.post) {
       axios.get('https://hapi-blog.herokuapp.com/v1/articles?key=' + this.post)
         .then(response => {
+          console.log(response.headers)
           this.article = response.data
           document.title = this.article.title + ' <@' + this.article.author.alias + '>'
           this.showComments()
