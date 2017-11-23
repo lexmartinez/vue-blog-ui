@@ -9,7 +9,7 @@ Pace.once('hide', () => {
   window.prerenderReady = true
 })
 
-console.info('%c', 'line-height:48px;padding:18px 150px;background:url(\'https://nerdist.com/wp-content/uploads/2017/04/deadpool-2-featured-image-04222017-322x268.jpg\') center / contain no-repeat;')
+console.info('%c', 'line-height:48px;padding:18px 150px;background:url(\'https://lexmartinez.github.io/static/vue-snip-by.png\') center / contain no-repeat;')
 
 Vue.use(SocialSharing)
 Vue.config.productionTip = false

@@ -35,10 +35,10 @@
       <div class="image featured" v-if="article.imageUrl">
         <img :src="article.imageUrl"/>
       </div>
-      <footer style="width:100%; height: 20px; margin-top: -20px">
+      <footer style="width:100%; height: 20px; margin-top: -20px" v-if="article.tags.length">
         <ul class="stats mob-padd" style="width:100%; height: 20px">
           <li>Tags: </li>
-          <li v-for="tag in article.tags"><a href="#">{{tag.name}}</a></li>
+          <li v-for="tag in article.tags"><a href="#">#{{tag.name}}</a></li>
         </ul>
       </footer>
       <p style="text-align: justify">{{article.abstract}}</p>
