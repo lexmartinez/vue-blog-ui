@@ -40,7 +40,11 @@
       </footer>
       <p style="text-align: justify">{{article.abstract}}</p>
       <p><vue-markdown :source="article.content"></vue-markdown></p>
-      <footer>
+      <footer style="border-top: solid 1px rgba(160, 160, 160, 0.3);">
+        <br/>
+        <div style="width: 100%; margin-top: 20px">
+          <vue-disqus shortname="lexmartinez" :identifier="article.key" :key="article.key" :url="'https://lexmartinez.github.io/read/'+article.key"></vue-disqus>
+        </div>
       </footer>
     </article>
   </transition>
@@ -49,11 +53,12 @@
 <script>
 import axios from 'axios'
 import VueMarkdown from 'vue-markdown'
+import VueDisqus from 'vue-disqus/VueDisqus.vue'
 
 export default {
   name: 'blog-post',
   resource: 'BlogPost',
-  components: {VueMarkdown},
+  components: {VueMarkdown, VueDisqus},
   props: { post: String },
 
   data () {
