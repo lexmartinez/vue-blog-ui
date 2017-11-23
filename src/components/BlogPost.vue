@@ -22,7 +22,7 @@
                 </network>
               </div>
             </social-sharing>
-</span>
+          </span>
           </p>
         </div>
         <div class="meta">
@@ -32,6 +32,9 @@
           </div>
         </div>
       </header>
+      <div class="image featured" v-if="article.imageUrl">
+        <img :src="article.imageUrl"/>
+      </div>
       <footer style="width:100%; height: 20px; margin-top: -20px">
         <ul class="stats mob-padd" style="width:100%; height: 20px">
           <li>Tags: </li>
