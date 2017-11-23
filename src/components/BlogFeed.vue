@@ -86,15 +86,18 @@
       }
     },
     created () {
+      this.$Progress.start()
       let url = 'https://hapi-blog.herokuapp.com/v1/articles'
       if (this.filters && this.filters.tag) {
         url = `https://hapi-blog.herokuapp.com/v1/articles?tag=${this.filters.tag}`
       }
       axios.get(url)
         .then(response => {
+          this.$Progress.finish()
           this.posts = response.data
         })
         .catch(e => {
+          this.$Progress.fail()
           this.showErrorMsg({message: '... we got problems fetching the articles', title: 'Uh oh!', timeout: 5000})
         })
     }

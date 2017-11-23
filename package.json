@@ -19,6 +19,7 @@
     "vue-markdown": "^2.2.4",
     "vue-moment-jalaali": "^2.0.0",
     "vue-notifications": "^0.9.0",
+    "vue-progressbar": "^0.7.3",
     "vue-router": "^3.0.1",
     "vue-social-sharing": "^2.2.10"
   },
@@ -64,9 +65,7 @@
     "portfinder": "^1.0.13",
     "webpack": "^3.6.0",
     "webpack-dev-server": "^2.9.1",
-    "webpack-merge": "^4.1.0",
-    "pace": "0.0.4",
-    "pace-progress": "^1.0.2"
+    "webpack-merge": "^4.1.0"
   },
   "engines": {
     "node": ">= 4.0.0",
@@ -77,5 +76,5 @@
     "last 2 versions",
     "not ie <= 8"
   ],
-  "license" : "MIT"
+  "license": "MIT"
 }

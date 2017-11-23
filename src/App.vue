@@ -1,5 +1,8 @@
 <template>
-  <router-view id="app"/>
+  <div>
+    <router-view id="app"/>
+    <vue-progress-bar></vue-progress-bar>
+  </div>
 </template>
 
 <script>

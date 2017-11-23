@@ -1,6 +1,6 @@
 <template>
   <transition name="post">
-    <article class="post" v-if="post && article">
+    <article class="post" v-if="post && article && article.id">
       <header>
         <div class="title">
           <h2>{{ article.title }}</h2>
@@ -26,7 +26,7 @@
           </p>
         </div>
         <div class="meta">
-          <div class="date">
+          <div class="date" v-if="article.publishedAt">
             <div class=" ">{{article.publishedAt | moment("MMMM")}}</div>
             <div class="day">{{article.publishedAt | moment("DD")}}</div>
           </div>
@@ -37,7 +37,7 @@
       </div>
       <footer style="width:100%; height: 20px; margin-top: -20px" v-if="article.tags && article.tags.length">
         <ul class="stats mob-padd" style="width:100%; height: 20px">
-          <li>Tags: </li>
+          <li><i class="fa fa-tag"></i> Tags: </li>
           <li v-for="tag in article.tags"><a href="#">#{{tag.name}}</a></li>
         </ul>
       </footer>
@@ -66,37 +66,22 @@ export default {
 
   data () {
     return {
-      article: {},
-      commentsReady: false
-    }
-  },
-
-  watch: {
-    post (to, from) {
-      if (to === from || !this.post) return
-
-      this.commentsReady = false
-    }
-  },
-
-  methods: {
-    showComments () {
-      setTimeout(() => {
-        this.commentsReady = true
-      }, 1000)
+      article: {}
     }
   },
 
   beforeMount () {
     if (this.post) {
+      this.$Progress.start()
       axios.get('https://hapi-blog.herokuapp.com/v1/articles?key=' + this.post)
         .then(response => {
-          console.log(response.headers)
+          console.log(response)
           this.article = response.data
           document.title = this.article.title + ' <@' + this.article.author.alias + '>'
-          this.showComments()
+          this.$Progress.finish()
         })
         .catch(e => {
+          this.$Progress.fail()
           this.showErrorMsg({message: '... we got problems fetching the articles', title: 'Uh oh!', timeout: 5000})
         })
     }
