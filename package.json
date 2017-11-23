@@ -16,6 +16,7 @@
     "izitoast": "^1.2.0",
     "vue": "^2.5.2",
     "vue-disqus": "^2.0.4",
+    "vue-head": "^2.0.11",
     "vue-markdown": "^2.2.4",
     "vue-moment-jalaali": "^2.0.0",
     "vue-notifications": "^0.9.0",

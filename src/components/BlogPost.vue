@@ -90,15 +90,32 @@ export default {
       article: {}
     }
   },
-
+  head: {
+    meta: () => {
+      return [
+        { name: 'description', content: '' },
+        { p: 'og:type', c: 'article' },
+        { p: 'og:title', c: 'article' },
+        { p: 'og:url', c: 'Lex Martinez' },
+        { p: 'og:site_name', c: '' },
+        {name: 'twitter:card', c: 'summary'},
+        {name: 'twitter:title', c: ''},
+        {name: 'twitter:description', c: ''}
+      ]
+    }
+  },
   beforeMount () {
     if (this.post) {
       this.$Progress.start()
       axios.get('https://hapi-blog.herokuapp.com/v1/articles?key=' + this.post)
         .then(response => {
-          console.log(response)
           this.article = response.data
           document.title = this.article.title + ' <@' + this.article.author.alias + '>'
+          document.head.querySelector('meta[name=description]').content = this.article.abstract
+          document.head.querySelector('meta[property=og:title]').content = this.article.title
+          document.head.querySelector('meta[property=twitter:title]').content = this.article.title
+          document.head.querySelector('meta[property=twitter:description]').content = this.article.abstract
+          document.head.querySelector('meta[property=og:url]').content = 'https://lexmartinez.github.io/read/' + this.article.key
           this.$Progress.finish()
         })
         .catch(e => {
