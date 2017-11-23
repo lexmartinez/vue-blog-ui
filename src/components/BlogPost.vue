@@ -90,20 +90,6 @@ export default {
       article: {}
     }
   },
-  head: {
-    meta: () => {
-      return [
-        { name: 'description', content: '' },
-        { p: 'og:type', c: 'article' },
-        { p: 'og:title', c: '' },
-        { p: 'og:url', c: 'https://lexmartinez.github.io' },
-        { p: 'og:site_name', c: 'Lex Martinez' },
-        {name: 'twitter:card', c: 'summary'},
-        {name: 'twitter:title', c: ''},
-        {name: 'twitter:description', c: ''}
-      ]
-    }
-  },
   beforeMount () {
     if (this.post) {
       this.$Progress.start()
@@ -111,11 +97,6 @@ export default {
         .then(response => {
           this.article = response.data
           document.title = this.article.title + ' <@' + this.article.author.alias + '>'
-          document.head.querySelector('meta[name=description]').content = this.article.abstract
-          document.head.querySelector('meta[property="og:title"]').content = this.article.title
-          document.head.querySelector('meta[property="og:url"]').content = 'https://lexmartinez.github.io/read/' + this.article.key
-          document.head.querySelector('meta[name="twitter:title"]').content = this.article.title
-          document.head.querySelector('meta[name="twitter:description"]').content = this.article.abstract
           this.$Progress.finish()
         })
         .catch(e => {
