@@ -3526,6 +3526,11 @@
   }
 }
 
+@media screen and (max-width: 780px) and (max-height: 480px) {
+  .image.featured{
+    padding-bottom:20px !important;
+  }
+}
 
 :root {
   --fir-font-article: "adobe-garamond-pro", "Times New Roman", Times;
