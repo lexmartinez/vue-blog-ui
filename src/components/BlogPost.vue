@@ -4,7 +4,26 @@
       <header>
         <div class="title">
           <h2>{{ article.title }}</h2>
-          <p v-if="article.author">By <strong>{{article.author.name}}</strong> &lt;&#064;{{article.author.alias}}&gt;</p>
+          <p v-if="article.author">By <strong>{{article.author.name}}</strong> &lt;&#064;{{article.author.alias}}&gt;
+          <span class="sharebox">
+            <social-sharing :url="'https://lexmartinez.github.io/read/'+article.key"
+                            :title="article.title"
+                            :quote="article.title"
+                            :description="article.title"
+                            twitter-user="lex0316"
+                            inline-template>
+              <div>
+                Share :
+                <network network="facebook">
+                  <span class="button big"><i class="fa fa-lg fa-facebook"></i></span>
+                </network>
+                <network network="twitter">
+                  <span class="button big"><i class="fa fa-lg fa-twitter"></i></span>
+                </network>
+              </div>
+            </social-sharing>
+</span>
+          </p>
         </div>
         <div class="meta">
           <div class="date">
@@ -22,7 +41,6 @@
       <p style="text-align: justify">{{article.abstract}}</p>
       <p><vue-markdown :source="article.content"></vue-markdown></p>
       <footer>
-
       </footer>
     </article>
   </transition>

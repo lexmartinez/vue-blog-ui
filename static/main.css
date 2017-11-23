@@ -3492,6 +3492,10 @@
   transform: translate(-50%, -50%);
 }
 
+.sharebox{
+  float: right;
+}
+
 @media screen and (max-width: 480px) {
   .about-avatar {
     width: 10em;
@@ -3502,5 +3506,10 @@
 
   .about-wrapper{
     width: 300px
+  }
+
+  .sharebox{
+    float: none;
+    margin-top:20px !important;
   }
 }

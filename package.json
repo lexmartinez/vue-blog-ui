@@ -18,7 +18,8 @@
     "vue-markdown": "^2.2.4",
     "vue-moment-jalaali": "^2.0.0",
     "vue-notifications": "^0.9.0",
-    "vue-router": "^3.0.1"
+    "vue-router": "^3.0.1",
+    "vue-social-sharing": "^2.2.10"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
