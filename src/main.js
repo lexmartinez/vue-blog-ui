@@ -16,7 +16,7 @@ Vue.use(VueAuthenticate, {
   providers: {
     github: {
       clientId: 'f1f1d33a1af35bf8e43b',
-      redirectUri: 'http://localhost:8080/admin/callback' // Your client app URL
+      redirectUri: 'https://lexmartinez.github.io/admin/callback' // Your client app URL
     }
   }
 })
