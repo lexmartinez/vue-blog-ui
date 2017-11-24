@@ -4,7 +4,7 @@ import Blog from '../components'
 
 Vue.use(Router)
 
-export default new Router({
+const router = new Router({
   mode: 'history',
   linkActiveClass: 'active',
   routes: [{
@@ -23,5 +23,24 @@ export default new Router({
     name: 'post',
     props: true,
     component: Blog
+  }, {
+    path: '/admin',
+    name: 'admin',
+    component: Blog
   }]
 })
+
+router.beforeEach((to, from, next) => {
+  if (to && to.name === 'admin') {
+    // here is the auth section :3
+    if (Vue.localStorage.get('auth.token')) {
+      next()
+    } else {
+      next('/')
+    }
+  } else {
+    next()
+  }
+})
+
+export default router
