@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Blog from '../components'
+import BlogAdmin from '../components/BlogAdmin.vue'
+import BlogLogin from '../components/BlogLogin.vue'
 
 Vue.use(Router)
 
@@ -26,7 +28,15 @@ const router = new Router({
   }, {
     path: '/admin',
     name: 'admin',
-    component: Blog
+    component: BlogAdmin
+  }, {
+    path: '/admin/login',
+    name: 'login',
+    component: BlogLogin
+  }, {
+    path: '/admin/callback',
+    name: 'callback',
+    component: BlogAdmin
   }]
 })
 
@@ -36,8 +46,11 @@ router.beforeEach((to, from, next) => {
     if (Vue.localStorage.get('auth.token')) {
       next()
     } else {
-      next('/')
+      next('/admin/login')
     }
+  } else if (to && to.name === 'callback') {
+    console.log(to)
+    Vue.localStorage.set('auth.token', '123345')
   } else {
     next()
   }
