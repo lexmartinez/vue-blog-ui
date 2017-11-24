@@ -21,7 +21,7 @@
               <!--<input type="text" name="query" placeholder="Search" />-->
             <!--</form>-->
           <!--</li>-->
-          <li>
+          <li class="nav-twitter">
             <a class="fa-twitter" href="https://twitter.com/lex0316" target="_blank">Twitter</a>
           </li>
           <li>

@@ -3526,9 +3526,17 @@
   }
 }
 
+
+
 @media screen and (max-width: 780px) and (max-height: 480px) {
   .image.featured{
     padding-bottom:20px !important;
+  }
+}
+
+@media screen and (max-width: 361px)  {
+  .nav-twitter{
+    display: none !important;
   }
 }
 
