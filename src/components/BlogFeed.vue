@@ -7,7 +7,26 @@
             <h2>
               <router-link :to="`/read/${post.key}`">{{ post.title }}</router-link>
             </h2>
-            <p v-if="post.author">By <strong>{{post.author.name}}</strong> &lt;&#064;{{post.author.alias}}&gt;
+            <p v-if="post.author">
+              <popper trigger="click" :options="{placement: 'bottom'}">
+                <div class="popper">
+                  <figure class="fir-image-figure author-popover">
+                    <img class="fir-author-image fir-clickcircle" :src="post.author.avatar" :alt="post.author.name">
+                    <figcaption>
+                      <div class="fig-author-figure-title"><strong>{{post.author.name}}</strong></div>
+                      <div class="fig-author-figure-title">{{post.author.bio}}</div>
+                      <div class="fig-author-figure-title" style="text-align: right;" v-if="post.author.github && post.author.twitter">
+                        <a :href="post.author.twitter" v-if="post.author.twitter"><i class="fa fa-twitter fa-2x"></i></a>
+                        <a :href="post.author.github" v-if="post.author.github"><i class="fa fa-github fa-2x"></i></a>
+                      </div>
+                    </figcaption>
+                  </figure>
+                </div>
+                <span slot="reference" style="cursor: pointer">
+                By <strong>{{post.author.name}}</strong> &lt;&#064;{{post.author.alias}}&gt;
+              </span>
+              </popper>
+
               <span class="sharebox">
             <social-sharing :url="'https://lexmartinez.github.io/read/'+post.key"
                             :title="post.title"
@@ -54,6 +73,8 @@
 <script>
   import axios from 'axios'
   import VueNotifications from 'vue-notifications'
+  import Popper from 'vue-popperjs'
+  import 'vue-popperjs/dist/css/vue-popper.css'
 
   export default {
     name: 'blog-feed',
@@ -64,7 +85,7 @@
         default: () => {}
       }
     },
-
+    components: {popper: Popper},
     data () {
       return {
         posts: []
