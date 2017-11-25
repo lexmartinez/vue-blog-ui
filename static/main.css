@@ -3631,3 +3631,10 @@ html.wf-active .fir-image-figure .fig-author-figure-title {
   box-shadow: rgb(58, 58, 58) 0 0 0 0 !important;
   font-size: 10pt;
 }
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0
+}

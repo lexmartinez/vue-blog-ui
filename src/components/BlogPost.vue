@@ -1,5 +1,5 @@
 <template>
-  <transition name="post">
+  <transition name="fade">
     <article class="post" v-if="post && article && article.id">
       <header>
         <div class="title">
@@ -78,6 +78,7 @@ import VueMarkdown from 'vue-markdown'
 import VueDisqus from 'vue-disqus/VueDisqus.vue'
 import Popper from 'vue-popperjs'
 import 'vue-popperjs/dist/css/vue-popper.css'
+import router from '../router'
 
 export default {
   name: 'blog-post',
@@ -87,7 +88,8 @@ export default {
 
   data () {
     return {
-      article: {}
+      article: {},
+      notFound: false
     }
   },
   beforeMount () {
@@ -97,11 +99,12 @@ export default {
         .then(response => {
           this.article = response.data
           document.title = this.article.title + ' <@' + this.article.author.alias + '>'
+          this.notFound = false
           this.$Progress.finish()
         })
         .catch(e => {
           this.$Progress.fail()
-          this.showErrorMsg({message: '... we got problems fetching the articles', title: 'Uh oh!', timeout: 5000})
+          router.replace('/page-not-found')
         })
     }
   }

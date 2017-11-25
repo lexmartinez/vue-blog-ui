@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Blog from '../components'
 import BlogAdmin from '../components/BlogAdmin.vue'
 import BlogLogin from '../components/BlogLogin.vue'
+import Blog404 from '../components/Blog404.vue'
 import axios from 'axios'
 
 Vue.use(Router)
@@ -34,6 +35,10 @@ const router = new Router({
     path: '/admin/login',
     name: 'login',
     component: BlogLogin
+  }, {
+    path: '*',
+    name: 'notfound',
+    component: Blog404
   }]
 })
 

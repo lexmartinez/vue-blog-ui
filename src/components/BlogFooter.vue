@@ -1,4 +1,5 @@
 <template>
+  <transition name="fade">
   <section style="text-align: center;">
     <!-- Footer -->
     <section id="footer">
@@ -12,6 +13,7 @@
     </section>
 
   </section>
+  </transition>
 </template>
 
 <script>

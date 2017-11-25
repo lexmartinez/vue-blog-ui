@@ -1,6 +1,7 @@
 <template>
   <main class="blog" id="app">
     <blog-nav/>
+    <transition name="fade">
         <article class="post login-box">
           <header>
             <div class="title">
@@ -22,6 +23,7 @@
             </ul>
           </footer>
         </article>
+    </transition>
     <div class="login-footer">
       <section style="text-align: center;">
         <section id="footer">
@@ -33,7 +35,6 @@
 </template>
 
 <script>
-import BlogFooter from './BlogFooter'
 import BlogNav from './BlogNav'
 import axios from 'axios'
 import Vue from 'vue'
@@ -43,7 +44,7 @@ import VueNotifications from 'vue-notifications'
 export default {
   name: 'blog-login',
   resource: 'BlogLogin',
-  components: {BlogNav, BlogFooter},
+  components: {BlogNav},
   data () {
     return {
       isLoging: false,
@@ -77,7 +78,7 @@ export default {
         .then(response => {
           Vue.localStorage.set('auth.token', response.data.token)
           this.$Progress.finish()
-          router.go('/admin')
+          router.replace('/admin')
         })
         .catch(e => {
           Vue.localStorage.remove('auth.token')

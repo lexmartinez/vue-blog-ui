@@ -34,6 +34,7 @@
       </nav>
     </header>
 
+    <transition name="fade">
     <div class="about-overlay" v-if="modal" @click="modal = !modal" >
       <div class="about-wrapper">
         <img src="https://avatars3.githubusercontent.com/u/17863319?s=460&v=4" class="about-avatar"/>
@@ -52,6 +53,7 @@
 
       </div>
     </div>
+    </transition>
   </div>
 </template>
 
