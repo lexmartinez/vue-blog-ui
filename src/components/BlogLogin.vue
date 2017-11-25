@@ -23,7 +23,11 @@
           </footer>
         </article>
     <div class="login-footer">
-      <blog-footer/>
+      <section style="text-align: center;">
+        <section id="footer">
+          <p class="copyright">Copyright &copy; 2017 Arlex D. Mart&iacute;nez</p>
+        </section>
+      </section>
     </div>
   </main>
 </template>
