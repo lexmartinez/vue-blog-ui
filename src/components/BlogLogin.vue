@@ -5,20 +5,20 @@
           <header>
             <div class="title">
               <h2>
-                Account Login
+                Authors Login
               </h2>
               <p>
-                Restricted area - please the fill account data
+                Restricted area - please fill your account data
               </p>
             </div>
             <div class="meta"></div>
           </header>
-          <p style="text-align: justify; margin-top: -10px">USERNAME: <input type="text" v-model="username"></p>
-          <p style="text-align: justify; margin-top: -20px">PASSWORD: <input type="password" v-model="password"></p>
+          <p style="text-align: justify; margin-top: -10px">USERNAME: <input type="text" v-model="username" @keyup.enter="login"></p>
+          <p style="text-align: justify; margin-top: -20px">PASSWORD: <input type="password" v-model="password" @keyup.enter="login"></p>
           <footer>
             <ul class="stats" style="width:100%"></ul>
             <ul class="actions" style="float:right !important;">
-              <li> <a class="button big" @click="login">LOGIN</a></li>
+              <li style="cursor:pointer"> <a class="button big" @click="login">LOGIN</a></li>
             </ul>
           </footer>
         </article>

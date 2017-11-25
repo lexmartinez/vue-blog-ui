@@ -27,7 +27,7 @@
           <li>
             <a class="fa-github-alt" href="https://github.com/lexmartinez" target="_blank">Github</a>
           </li>
-          <li>
+          <li style="cursor:pointer">
             <a class="fa-user-circle-o" @click="modal = !modal">About Me</a>
           </li>
         </ul>
