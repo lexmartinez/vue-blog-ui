@@ -1,15 +1,87 @@
 <template>
-  <h1>Login</h1>
+  <main class="blog" id="app">
+    <blog-nav/>
+        <article class="post login-box">
+          <header>
+            <div class="title">
+              <h2>
+                Account Login
+              </h2>
+              <p>
+                Restricted area - please the fill account data
+              </p>
+            </div>
+            <div class="meta"></div>
+          </header>
+          <p style="text-align: justify; margin-top: -10px">USERNAME: <input type="text" v-model="username"></p>
+          <p style="text-align: justify; margin-top: -20px">PASSWORD: <input type="password" v-model="password"></p>
+          <footer>
+            <ul class="stats" style="width:100%"></ul>
+            <ul class="actions" style="float:right !important;">
+              <li> <a class="button big" @click="login">LOGIN</a></li>
+            </ul>
+          </footer>
+        </article>
+    <div class="login-footer">
+      <blog-footer/>
+    </div>
+  </main>
 </template>
 
 <script>
+import BlogFooter from './BlogFooter'
+import BlogNav from './BlogNav'
+import axios from 'axios'
+import Vue from 'vue'
+import router from '../router'
+import VueNotifications from 'vue-notifications'
+
 export default {
-  name: 'blog-admin',
-  resource: 'BlogAdmin',
-  beforeMount () {
-    this.$auth.authenticate('github').then((a) => {
-      console.log(a)
-    })
+  name: 'blog-login',
+  resource: 'BlogLogin',
+  components: {BlogNav, BlogFooter},
+  data () {
+    return {
+      isLoging: false,
+      username: '',
+      password: ''
+    }
+  },
+  notifications: {
+    showSuccessMsg: {
+      type: VueNotifications.types.success
+    },
+    showInfoMsg: {
+      type: VueNotifications.types.info
+    },
+    showWarnMsg: {
+      type: VueNotifications.types.warn
+    },
+    showErrorMsg: {
+      type: VueNotifications.types.error
+    }
+  },
+  methods: {
+    login () {
+      if (this.username !== '' && this.password !== '') {
+        this.toLogin()
+      }
+    },
+    toLogin () {
+      this.$Progress.start()
+      axios.post('https://hapi-blog.herokuapp.com/v1/auth', {username: this.username, password: this.password})
+        .then(response => {
+          Vue.localStorage.set('auth.token', response.data.token)
+          this.$Progress.finish()
+          router.go('/admin')
+        })
+        .catch(e => {
+          Vue.localStorage.remove('auth.token')
+          console.log(e)
+          this.showErrorMsg({message: '... Could not login, please check your credentials', title: 'Uh oh!', timeout: 5000})
+          this.$Progress.fail()
+        })
+    }
   }
 }
 </script>

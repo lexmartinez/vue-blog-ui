@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Blog from '../components'
 import BlogAdmin from '../components/BlogAdmin.vue'
 import BlogLogin from '../components/BlogLogin.vue'
+import axios from 'axios'
 
 Vue.use(Router)
 
@@ -33,24 +34,32 @@ const router = new Router({
     path: '/admin/login',
     name: 'login',
     component: BlogLogin
-  }, {
-    path: '/admin/callback',
-    name: 'callback',
-    component: BlogAdmin
   }]
 })
 
 router.beforeEach((to, from, next) => {
   if (to && to.name === 'admin') {
-    // here is the auth section :3
     if (Vue.localStorage.get('auth.token')) {
-      next()
+      axios.get('https://hapi-blog.herokuapp.com/v1/auth/' + Vue.localStorage.get('auth.token'))
+        .then(response => next())
+        .catch(e => {
+          Vue.localStorage.remove('auth.token')
+          next('/admin/login')
+        })
     } else {
       next('/admin/login')
     }
-  } else if (to && to.name === 'callback') {
-    console.log(to)
-    Vue.localStorage.set('auth.token', '123345')
+  } else if (to && to.name === 'login') {
+    if (Vue.localStorage.get('auth.token')) {
+      axios.get('https://hapi-blog.herokuapp.com/v1/auth/' + Vue.localStorage.get('auth.token'))
+        .then(response => next('/admin'))
+        .catch(e => {
+          Vue.localStorage.remove('auth.token')
+          next()
+        })
+    } else {
+      next()
+    }
   } else {
     next()
   }
