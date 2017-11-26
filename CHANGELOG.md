@@ -1,1 +1,1 @@
-# hapi-blog Releases #
+# vue-blog-ui Releases #
