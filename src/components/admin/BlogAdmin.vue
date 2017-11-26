@@ -26,13 +26,6 @@
       <blog-tags v-if="current === 'tags'"></blog-tags>
       <blog-authors v-if="current === 'authors'"></blog-authors>
       <blog-articles v-if="current === 'articles'"></blog-articles>
-      <div class="login-footer">
-        <section style="text-align: center;">
-          <section id="footer">
-            <p class="copyright">Copyright &copy; 2017 Arlex D. Mart&iacute;nez</p>
-          </section>
-        </section>
-      </div>
     </main>
   </transition>
 </template>
