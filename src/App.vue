@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="width: 100%">
     <router-view id="app"/>
     <vue-progress-bar></vue-progress-bar>
   </div>

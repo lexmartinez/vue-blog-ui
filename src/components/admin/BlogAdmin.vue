@@ -3,15 +3,14 @@
     <main class="blog" id="app">
       <div>
         <!-- Header -->
-        <header id="header">
+        <header id="header" class="admin-header">
           <h1><router-link :to="'/admin'"><img src="/static/favicon.png" style="height:20px; vertical-align: middle; margin-top:-5px"> Lex Mart&iacute;nez</router-link>
           </h1>
           <nav class="links">
             <ul>
-              <li><a href="#"><i class="fa fa-tags fa-lg"></i> Tags</a></li>
-              <li><a href="#"><i class="fa fa-coffee fa-lg"></i> Authors</a></li>
-              <li><a href="#"><i class="fa fa-newspaper-o fa-lg"></i> Articles</a></li>
-              <li><a href="#"><i class="fa fa-comments fa-lg"></i> Comments</a></li>
+              <li><a style="cursor: pointer" @click="current = 'tags'" v-bind:class="{ active: current==='tags' }"><i class="fa fa-tags fa-lg"></i> Tags</a></li>
+              <li><a style="cursor: pointer" @click="current = 'authors'" v-bind:class="{ active: current==='authors' }"><i class="fa fa-coffee fa-lg"></i> Authors</a></li>
+              <li><a style="cursor: pointer"  @click="current = 'articles'" v-bind:class="{ active: current==='articles' }"><i class="fa fa-newspaper-o fa-lg"></i> Articles</a></li>
               <li></li>
             </ul>
           </nav>
@@ -24,21 +23,9 @@
           </nav>
         </header>
       </div>
-
-      <article class="post">
-        <header>
-          <div class="title">
-            <h2>
-              TEST CONTENT
-            </h2>
-            <p>
-              TEST CONTENT TEST CONTENT
-            </p>
-          </div>
-          <div class="meta"></div>
-        </header>
-
-      </article>
+      <blog-tags v-if="current === 'tags'"></blog-tags>
+      <blog-authors v-if="current === 'authors'"></blog-authors>
+      <blog-articles v-if="current === 'articles'"></blog-articles>
       <div class="login-footer">
         <section style="text-align: center;">
           <section id="footer">
@@ -52,12 +39,21 @@
 
 <script>
 import Vue from 'vue'
-import router from '../router'
+import router from '../../router/index'
 import axios from 'axios'
+import BlogTags from './BlogTags'
+import BlogAuthors from './BlogAuthors'
+import BlogArticles from './BlogArticles'
 
 export default {
   name: 'blog-admin',
   resource: 'BlogAdmin',
+  components: {BlogTags, BlogAuthors, BlogArticles},
+  data () {
+    return {
+      current: 'articles'
+    }
+  },
   methods: {
     logout () {
       this.$Progress.start()

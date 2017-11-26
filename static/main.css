@@ -3638,3 +3638,8 @@ html.wf-active .fir-image-figure .fig-author-figure-title {
 .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
   opacity: 0
 }
+
+header.admin-header > nav.links > ul > li > a.active{
+  color: #188D85 !important;
+  font-weight: 600 !important;
+}
