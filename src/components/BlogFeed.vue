@@ -67,6 +67,29 @@
         </footer>
       </article>
     </div>
+    <div v-if="!(posts || []).length">
+      <article class="post login-box">
+        <header>
+          <div class="title">
+            <h2>
+              Sorry!
+            </h2>
+            <p>
+              NO ARTICLES FOUND
+            </p>
+          </div>
+          <div class="meta"></div>
+        </header>
+        <h2 style="padding-top:20px">Opps, No results found!</h2>
+        <p>Your search did not match any article. Try searching for something else.</p>
+        <footer>
+          <ul class="stats" style="width:100%"></ul>
+          <ul class="actions" style="float:right !important; margin-right: 10px">
+            <li><i class="fa fa-search fa-5x"></i> </li>
+          </ul>
+        </footer>
+      </article>
+    </div>
   </div>
 </template>
 
