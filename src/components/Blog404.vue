@@ -2,7 +2,7 @@
   <main class="blog" id="app">
     <blog-nav/>
     <transition name="fade">
-      <article class="post login-box">
+      <article class="post ">
         <header>
           <div class="title">
             <h2>
