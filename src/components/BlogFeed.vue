@@ -68,7 +68,7 @@
       </article>
     </div>
     <div v-if="!(posts || []).length">
-      <article class="post login-box">
+      <article class="post">
         <header>
           <div class="title">
             <h2>
