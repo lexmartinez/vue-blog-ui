@@ -103,15 +103,7 @@
           })
       },
       detailModal (obj) {
-        this.author = {
-          id: obj.id,
-          name: obj.name,
-          alias: obj.alias,
-          bio: obj.bio,
-          twitter: obj.twitter,
-          github: obj.github,
-          avatar: obj.avatar
-        }
+        this.author = JSON.parse(JSON.stringify(obj))
         this.$modal.show('detail-modal')
       },
       deleteModal (obj) {

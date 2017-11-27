@@ -17,7 +17,7 @@
         <thead>
         <tr>
           <th style="width: 100px;">ID</th>
-          <th>TITLE</th>
+          <th style="width: 430px;">TITLE</th>
           <th>AUTHOR</th>
           <th style="width: 50px;">PUBLISHED</th>
           <th style="width: 300px; text-align: center">ACTIONS</th>
@@ -81,10 +81,7 @@
           })
       },
       detailModal (obj) {
-        this.article = {
-          id: obj.id,
-          key: obj.key
-        }
+        this.article = JSON.parse(JSON.stringify(obj))
         this.edit = true
       },
       deleteModal (obj) {
@@ -95,40 +92,6 @@
         this.article = {}
         this.edit = false
         this.$modal.hide('delete-modal')
-      },
-      saveData () {
-        this.$Progress.start()
-        if (this.article.github === '') {
-          this.article.github = null
-        }
-        if (this.article.twitter === '') {
-          this.article.twitter = null
-        }
-        if (this.article.id) {
-          axios.put('https://hapi-blog.herokuapp.com/v1/articles/' + this.article.id, this.article)
-            .then(response => {
-              this.$Progress.finish()
-              this.$modal.hide('detail-modal')
-              this.article = {}
-              this.load()
-            })
-            .catch(e => {
-              this.$Progress.fail()
-              this.showErrorMsg({message: '... we got problems updating data', title: 'Uh oh!', timeout: 5000})
-            })
-        } else {
-          axios.post('https://hapi-blog.herokuapp.com/v1/articles', this.article)
-            .then(response => {
-              this.$Progress.finish()
-              this.$modal.hide('detail-modal')
-              this.article = {}
-              this.load()
-            })
-            .catch(e => {
-              this.$Progress.fail()
-              this.showErrorMsg({message: '... we got problems saving data', title: 'Uh oh!', timeout: 5000})
-            })
-        }
       },
       deleteData () {
         this.$Progress.start()

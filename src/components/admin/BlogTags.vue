@@ -87,10 +87,7 @@ export default {
         })
     },
     detailModal (obj) {
-      this.tag = {
-        id: obj.id,
-        name: obj.name
-      }
+      this.tag = JSON.parse(JSON.stringify(obj))
       this.$modal.show('detail-modal')
     },
     deleteModal (obj) {
