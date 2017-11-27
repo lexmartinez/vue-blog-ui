@@ -3,19 +3,19 @@
     <article class="post">
       <header>
         <div style="position:absolute; right: 0; margin: 4px">
-          <a class="button small" style=" cursor: pointer; padding-top: 4px"  @click="publishModal" v-if="!article.publishedAt && article.id"><i class="fa fa-cloud-upload fa-2x"></i></a>
-          <a class="button small" style=" cursor: pointer; padding-top: 4px"  @click="unpublishModal" v-if="article.publishedAt && article.id"><i class="fa fa-cloud-download fa-2x"></i></a>
+          <a class="button small" style=" cursor: pointer; padding-top: 4px"  @click="publishModal" v-if="!article.publishedAt && articleId"><i class="fa fa-cloud-upload fa-2x"></i></a>
+          <a class="button small" style=" cursor: pointer; padding-top: 4px"  @click="unpublishModal" v-if="article.publishedAt && articleId"><i class="fa fa-cloud-download fa-2x"></i></a>
           <a class="button small" style=" cursor: pointer; padding-top: 4px"  @click="saveData"><i class="fa fa-floppy-o fa-2x"></i></a>
           <a class="button small" style=" cursor: pointer; padding-top: 4px"  @click="cancelModal"><i class="fa fa-times fa-2x"></i></a>
         </div>
         <div class="title">
           <div style="width:48%; float:left">
-            <p style="text-align: justify;">KEY: <input type="text" v-model="article.key" :readonly="article.id"></p>
+            <p style="text-align: justify;">KEY: <input type="text" v-model="article.key" :readonly="articleId"></p>
           </div>
           <div style="width:48%; float:right; margin-left:4%">
             <p style="text-align: justify;">AUTHOR: <select v-model="author">
               <option disabled value="">-- SELECT --</option>
-              <option v-for="author in authors" :value="author.id">{{author.name.toUpperCase()}} &nbsp; &lt;&#064;{{author.alias.toUpperCase()}}&gt;</option>
+              <option v-for="author in authors" :value="author.id">{{author.name.toUpperCase()}} &lt;&#064;{{author.alias.toUpperCase()}}&gt;</option>
             </select></p>
           </div>
 
@@ -29,6 +29,8 @@
           <div style="width:48%; float:left">
             <p style="text-align: justify;">IMAGE: <input type="text" v-model="article.imageUrl"></p>
           </div>
+
+          <p style="text-align: justify;" v-if="articleId">TAGS: <v-select multiple :options="tags" :label="'name'" :value.sync="tagList"></v-select></p>
 
         </div>
       </header>
@@ -84,17 +86,20 @@
 import axios from 'axios'
 import VueNotifications from 'vue-notifications'
 import VueMarkdown from 'vue-markdown'
+import vSelect from 'vue-select'
 
 export default {
   name: 'blog-article',
   resource: 'BlogArticle',
   props: { article: Object },
-  components: {VueMarkdown},
+  components: {VueMarkdown, vSelect},
   data () {
     return {
       authors: [],
       tags: [],
-      author: {}
+      author: {},
+      tagList: [],
+      articleId: undefined
     }
   },
   methods: {
@@ -184,14 +189,15 @@ export default {
         abstract: this.article.abstract,
         content: this.article.content || 'content 123',
         imageUrl: this.article.imageUrl,
-        author_id: this.author
+        author_id: this.author,
+        tags: this.tagList
       }
 
       if (this.article.imageUrl === '') {
         this.article.imageUrl = null
       }
-      if (this.article.id) {
-        axios.put('https://hapi-blog.herokuapp.com/v1/articles/' + this.article.id, obj)
+      if (this.article.id || this.articleId) {
+        axios.put('https://hapi-blog.herokuapp.com/v1/articles/' + (this.article.id || this.articleId), obj)
           .then(response => {
             this.$Progress.finish()
             this.showSuccessMsg({message: '... information successfully updated', title: 'Article'})
@@ -204,6 +210,7 @@ export default {
         axios.post('https://hapi-blog.herokuapp.com/v1/articles', obj)
           .then(response => {
             this.$Progress.finish()
+            this.articleId = response.data.id
             this.showSuccessMsg({message: '... information successfully stored', title: 'Article'})
           })
           .catch(e => {
@@ -229,6 +236,8 @@ export default {
   },
   created () {
     this.author = ((this.article.author || {}).id) || ''
+    this.tagList = this.article.tags
+    this.articleId = this.article.id
     this.getTags()
     this.getAuthors()
   }
