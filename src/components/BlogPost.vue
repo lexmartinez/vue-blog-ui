@@ -29,7 +29,6 @@
                             :title="article.title"
                             :quote="article.title"
                             :description="article.title"
-                            twitter-user="lex0316"
                             inline-template>
               <div>
                 Share :
