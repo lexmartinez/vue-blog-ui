@@ -9,5 +9,5 @@ before_script:
 script:
   - npm test & npm run build
 after_success:
-  "curl --ftp-create-dirs -T ./dist/index.html -u $FTP_USER:$FTP_PASSWORD ftp://$FTP_HOST"
-
+  - "curl --ftp-create-dirs -T ./dist/index.html -u $FTP_USER:$FTP_PASSWORD ftp://$FTP_HOST"
+  - "curl --ftp-create-dirs -T ./dist/static/*.* -u $FTP_USER:$FTP_PASSWORD ftp://$FTP_HOST/static"
