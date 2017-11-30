@@ -9,5 +9,5 @@ before_script:
 script:
   - npm test & npm run build
 after_success:
-  "curl -T ./dist/**/*.* -u $FTP_USER:$FTP_PASSWORD ftp://$FTP_HOST:$FTP_PORT/public_html/"
+  "curl -T ./dist/**/*.* -u $FTP_USER:$FTP_PASSWORD ftp://$FTP_HOST/public_html/"
 
