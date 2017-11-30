@@ -6,7 +6,7 @@ setup_git() {
 
 commit_website_files() {
   touch .htaccess
-  echo $HTACCESS >.htaccess
+  echo "$HTACCESS" >.htaccess
   git init
   git add -A
   git commit --message "Travis build: $TRAVIS_BUILD_NUMBER"
