@@ -7,7 +7,7 @@ import VueLocalStorage from 'vue-localstorage'
 import VModal from 'vue-js-modal'
 import {Tabs, Tab} from 'vue-tabs-component'
 
-console.info('%c', 'line-height:48px;padding:18px 150px;background:url(\'https://lexmartinez.github.io/static/vue-snip-by.png\') center / contain no-repeat;')
+console.info('%c', 'line-height:48px;padding:18px 150px;background:url(\'https://lexmartinez.com/static/vue-snip-by.png\') center / contain no-repeat;')
 
 Vue.use(SocialSharing)
 Vue.use(VueLocalStorage)

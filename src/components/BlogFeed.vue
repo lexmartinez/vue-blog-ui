@@ -28,7 +28,7 @@
               </popper>
 
               <span class="sharebox">
-            <social-sharing :url="'https://lexmartinez.github.io/read/'+post.key"
+            <social-sharing :url="'https://lexmartinez.com/read/'+post.key"
                             :title="post.title"
                             :quote="post.title"
                             :description="post.title"

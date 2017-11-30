@@ -1,6 +1,9 @@
 language: node_js
 node_js:
   - "7"
+branches:
+  only:
+  - master
 before_install:
   - chmod +x deploy.sh
 before_script:

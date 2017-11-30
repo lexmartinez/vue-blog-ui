@@ -5,7 +5,7 @@ setup_git() {
 }
 
 commit_website_files() {
-  mv ./static/404.html ./
+  mv ./static/.htaccess ./
   touch .nojekyll
   git init
   git add -A
@@ -14,7 +14,7 @@ commit_website_files() {
 
 upload_files() {
   git remote add origin https://${GH_TOKEN}@${GH_REPO_TARGET} > /dev/null 2>&1
-  git push -f --quiet --set-upstream origin master
+  git push -f --quiet --set-upstream origin deploy
 }
 
 cd dist

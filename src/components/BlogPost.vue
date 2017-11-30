@@ -25,7 +25,7 @@
               </span>
             </popper>
           <span class="sharebox">
-            <social-sharing :url="'https://lexmartinez.github.io/read/'+article.key"
+            <social-sharing :url="'https://lexmartinez.com/read/'+article.key"
                             :title="article.title"
                             :quote="article.title"
                             :description="article.title"
@@ -64,7 +64,7 @@
       <footer style="border-top: solid 1px rgba(160, 160, 160, 0.3);">
         <br/>
         <div style="width: 100%; margin-top: 20px">
-          <vue-disqus shortname="lexmartinez" :identifier="article.key" :key="article.key" :url="'https://lexmartinez.github.io/read/'+article.key"></vue-disqus>
+          <vue-disqus shortname="lexmartinez" :identifier="article.key" :key="article.key" :url="'https://lexmartinez.com/read/'+article.key"></vue-disqus>
         </div>
       </footer>
     </article>
