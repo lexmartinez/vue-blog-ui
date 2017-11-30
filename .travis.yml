@@ -8,8 +8,7 @@ before_script:
   - npm install
 script:
   - npm test & npm run build
-deploy:
-  provider: script
-  script: node deploy.js
-  on:
-    branch: master
+after_success:
+  - "curl --ftp-create-dirs -T ./dist/index.html -u $FTP_USER:$FTP_PASSWORD ftp://$FTP_HOST"
+  - "curl --ftp-create-dirs -T ./dist/static/** -u $FTP_USER:$FTP_PASSWORD ftp://$FTP_HOST"
+
