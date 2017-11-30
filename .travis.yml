@@ -4,8 +4,6 @@ node_js:
 branches:
   only:
   - master
-before_install:
-  - chmod +x deploy.sh
 before_script:
   - npm install
 script:
