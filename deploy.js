@@ -22,20 +22,27 @@ client.on('ready', function() {
      * somehow you need to workout what files you are going to upload
      * you may need to compare with what already exists in the server
      */
-    var uploadList = /* your upload list */
+
+    var uploadList = []
+
+    fs.readdir('./dist', function(err, items) {
+      uploadList = items;
+    });
+
+    /* your upload list */
     var total = uploadList.length;
     var uploadCount = 0;
     var errorList = [];
     uploadList.forEach(function(file) {
-      console.log(chalk.blue('start'), file.local + chalk.grey(' --> ') + file.target);
-      client.put(file.local, file.target, function(err) {
+      console.log(chalk.blue('start'), file + chalk.grey(' --> ') + file.target);
+      client.put(file, file, function(err) {
         uploadCount++;
         if (err) {
-          console.error(chalk.red('error'), file.local + chalk.grey(' --> ') + file.target);
+          console.error(chalk.red('error'), file + chalk.grey(' --> ') + file);
           console.error(err.message);
           throw err;
         } else {
-          console.info(chalk.green('success'), file.local + chalk.grey(' --> ') + file.target, chalk.grey('( ' + uploadCount + '/' + total + ' )'));
+          console.info(chalk.green('success'), file + chalk.grey(' --> ') + file, chalk.grey('( ' + uploadCount + '/' + total + ' )'));
         }
 
         if (uploadCount === total) {
@@ -45,7 +52,7 @@ client.on('ready', function() {
           } else {
             console.log(chalk.red('Failed files:'));
             errorList.forEach(function(file) {
-              console.log(file.local + chalk.grey(' --> ') + file.target);
+              console.log(file.local + chalk.grey(' --> ') + file);
             });
             throw 'Total Failed: ' + errorList.length;
           }
