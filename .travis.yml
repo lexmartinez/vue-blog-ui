@@ -10,4 +10,4 @@ script:
   - npm test & npm run build
 after_success:
   - "curl --ftp-create-dirs -T ./dist/index.html -u $FTP_USER:$FTP_PASSWORD ftp://$FTP_HOST"
-  - "find dist/static -type f -exec curl -u $FTP_USER:$FTP_PASSWORD --ftp-create-dirs -T {} ftp://$FTP_HOST{} \;"
+  - "find dist/static -type f -exec curl -u $FTP_USER:$FTP_PASSWORD --ftp-create-dirs -T ftp://$FTP_HOST;"
