@@ -25,11 +25,7 @@
               </span>
             </popper>
           <span class="sharebox">
-            <social-sharing :url="'https://lexmartinez.com/read/'+article.key"
-                            :title="article.title"
-                            :quote="article.title"
-                            :description="article.title"
-                            inline-template>
+            <social-sharing :url="'https://lexmartinez.com/read/'+post.key" inline-template>
               <div>
                 Share :
                 <network network="facebook">
