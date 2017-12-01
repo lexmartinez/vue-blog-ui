@@ -74,6 +74,23 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
   
 This app is ready to be deployed to github pages through TravisCI (using the .travis.yml file) you just need to create the github repo and setup the github key on travisCI
 
+#### Apache Deploy
+
+Since if you enter a URL directly the router will throw us a 404 error, we must add the following snippet to our `.htaccess` file if we are deploying in apache server, if you can not check the [vue docs] (https : //router.vuejs.org/en/essentials/history-mode.html) in order to see other setup / server options 
+
+```
+<ifModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+  RewriteRule ^index\.html$ - [L]
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule . /post.php [L]
+</ifModule>
+```
+
+> Note that we are redirecting the requests to `post.php` in order to use our metatags script/plugin but if you don't want use it or your server isn't PHP compatible you can replace that line (7) by `RewriteRule . /index.html [L]`
+
 ## License
 
 This project is licensed under MIT License - see the [LICENSE.md](https://github.com/lexmartinez/vue-blog-ui/blob/master/LICENSE.md) file for details
