@@ -76,7 +76,7 @@ This app is ready to be deployed to github pages through TravisCI (using the .tr
 
 #### Apache Deploy
 
-Since if you enter a URL directly the router will throw us a 404 error, we must add the following snippet to our `.htaccess` file if we are deploying in apache server, if you can not check the [vue docs] (https : //router.vuejs.org/en/essentials/history-mode.html) in order to see other setup / server options 
+Since if you enter a URL directly the router will throw us a 404 error, we must add the following snippet to our `.htaccess` file if we are deploying in apache server, if you can not check the [vue docs](https : //router.vuejs.org/en/essentials/history-mode.html) in order to see other setup / server options 
 
 ```
 <ifModule mod_rewrite.c>
