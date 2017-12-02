@@ -63,7 +63,10 @@
       </article>
     </div>
     <div v-if="!(posts || []).length">
-      <article class="post">
+      <article v-if="loading" style="width: 100%; height: 300px; vertical-align: middle; text-align: center">
+        <i class="fa fa-cog fa-spin fa-4x fa-fw" style="color:#ababab; font-weight: 200"></i>
+      </article>
+      <article class="post" v-if="!loading">
         <header>
           <div class="title">
             <h2>
@@ -106,7 +109,8 @@
     components: {popper: Popper},
     data () {
       return {
-        posts: []
+        posts: [],
+        loading: false
       }
     },
 
@@ -126,6 +130,7 @@
     },
     created () {
       this.$Progress.start()
+      this.loading = true
       let url = 'https://hapi-blog.herokuapp.com/v1/articles'
       if (this.filters && this.filters.tag) {
         url = `https://hapi-blog.herokuapp.com/v1/articles?tag=${this.filters.tag}`
@@ -133,10 +138,12 @@
       axios.get(url)
         .then(response => {
           this.$Progress.finish()
+          this.loading = false
           this.posts = response.data
         })
         .catch(e => {
           this.$Progress.fail()
+          this.loading = false
           this.showErrorMsg({message: '... we got problems fetching the articles', title: 'Uh oh!', timeout: 5000})
         })
     }
