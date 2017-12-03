@@ -61,7 +61,7 @@
 </template>
 
 <script>
-import axios from 'axios'
+import service from '@/services/TagService'
 import VueNotifications from 'vue-notifications'
 
 export default {
@@ -76,7 +76,7 @@ export default {
   methods: {
     load () {
       this.$Progress.start()
-      axios.get('https://hapi-blog.herokuapp.com/v1/tags')
+      service.list()
         .then(response => {
           this.$Progress.finish()
           this.tags = response.data
@@ -103,7 +103,7 @@ export default {
       if (this.tag.name && /^([a-z0-9-])+$/.test(this.tag.name)) {
         this.$Progress.start()
         if (this.tag.id) {
-          axios.put('https://hapi-blog.herokuapp.com/v1/tags/' + this.tag.id, this.tag)
+          service.update(this.tag.id, this.tag)
             .then(response => {
               this.$Progress.finish()
               this.$modal.hide('detail-modal')
@@ -115,7 +115,7 @@ export default {
               this.showErrorMsg({message: '... we got problems updating data', title: 'Uh oh!', timeout: 5000})
             })
         } else {
-          axios.post('https://hapi-blog.herokuapp.com/v1/tags', this.tag)
+          service.create(this.tag)
             .then(response => {
               this.$Progress.finish()
               this.$modal.hide('detail-modal')
@@ -131,7 +131,7 @@ export default {
     },
     deleteData () {
       this.$Progress.start()
-      axios.delete('https://hapi-blog.herokuapp.com/v1/tags/' + this.tag.id)
+      service.delete(this.tag.id)
         .then(response => {
           this.$Progress.finish()
           this.$modal.hide('delete-modal')

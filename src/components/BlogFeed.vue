@@ -92,10 +92,10 @@
 </template>
 
 <script>
-  import axios from 'axios'
   import VueNotifications from 'vue-notifications'
   import Popper from 'vue-popperjs'
   import 'vue-popperjs/dist/css/vue-popper.css'
+  import service from '../services/BlogService'
 
   export default {
     name: 'blog-feed',
@@ -131,11 +131,11 @@
     created () {
       this.$Progress.start()
       this.loading = true
-      let url = 'https://hapi-blog.herokuapp.com/v1/articles'
+      let tag
       if (this.filters && this.filters.tag) {
-        url = `https://hapi-blog.herokuapp.com/v1/articles?tag=${this.filters.tag}`
+        tag = this.filters.tag
       }
-      axios.get(url)
+      service.getArticles(tag)
         .then(response => {
           this.$Progress.finish()
           this.loading = false

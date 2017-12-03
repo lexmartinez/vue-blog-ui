@@ -5,6 +5,7 @@ import BlogAdmin from '../components/admin/BlogAdmin.vue'
 import BlogLogin from '../components/BlogLogin.vue'
 import Blog404 from '../components/Blog404.vue'
 import axios from 'axios'
+import service from '@/services/AuthService'
 
 Vue.use(Router)
 
@@ -45,7 +46,7 @@ const router = new Router({
 router.beforeEach((to, from, next) => {
   if (to && to.name === 'admin') {
     if (Vue.localStorage.get('auth.token')) {
-      axios.get('https://hapi-blog.herokuapp.com/v1/auth/' + Vue.localStorage.get('auth.token'))
+      service.validate(Vue.localStorage.get('auth.token'))
         .then(response => {
           axios.defaults.headers.common['x-auth-token'] = Vue.localStorage.get('auth.token')
           next()
@@ -59,7 +60,7 @@ router.beforeEach((to, from, next) => {
     }
   } else if (to && to.name === 'login') {
     if (Vue.localStorage.get('auth.token')) {
-      axios.get('https://hapi-blog.herokuapp.com/v1/auth/' + Vue.localStorage.get('auth.token'))
+      service.validate(Vue.localStorage.get('auth.token'))
         .then(response => next('/admin'))
         .catch(e => {
           Vue.localStorage.remove('auth.token')

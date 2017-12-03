@@ -88,7 +88,9 @@
   </transition>
 </template>
 <script>
-import axios from 'axios'
+import articleService from '@/services/BlogService'
+import tagService from '@/services/TagService'
+import authorService from '@/services/AuthorService'
 import VueNotifications from 'vue-notifications'
 import VueMarkdown from 'vue-markdown'
 import vSelect from 'vue-select'
@@ -110,7 +112,7 @@ export default {
   methods: {
     getTags () {
       this.$Progress.start()
-      axios.get('https://hapi-blog.herokuapp.com/v1/tags')
+      tagService.list()
         .then(response => {
           this.$Progress.finish()
           this.tags = response.data
@@ -122,7 +124,7 @@ export default {
     },
     getAuthors () {
       this.$Progress.start()
-      axios.get('https://hapi-blog.herokuapp.com/v1/authors')
+      authorService.list()
         .then(response => {
           this.$Progress.finish()
           this.authors = response.data
@@ -156,7 +158,7 @@ export default {
         id: this.article.id,
         publishedAt: new Date()
       }
-      axios.put('https://hapi-blog.herokuapp.com/v1/articles/' + this.article.id, obj)
+      articleService.update((this.article.id || this.articleId), obj)
         .then(response => {
           this.$Progress.finish()
           this.article.publishedAt = new Date()
@@ -170,10 +172,10 @@ export default {
     },
     unpublish () {
       const obj = {
-        id: this.article.id,
+        id: (this.article.id || this.articleId),
         publishedAt: null
       }
-      axios.put('https://hapi-blog.herokuapp.com/v1/articles/' + this.article.id, obj)
+      articleService.update((this.article.id || this.articleId), obj)
         .then(response => {
           this.$Progress.finish()
           this.article.publishedAt = null
@@ -203,7 +205,7 @@ export default {
         this.article.imageUrl = null
       }
       if (this.article.id || this.articleId) {
-        axios.put('https://hapi-blog.herokuapp.com/v1/articles/' + (this.article.id || this.articleId), obj)
+        articleService.update((this.article.id || this.articleId), obj)
           .then(response => {
             this.$Progress.finish()
             this.showSuccessMsg({message: '... information successfully updated', title: 'Article'})
@@ -213,7 +215,7 @@ export default {
             this.showErrorMsg({message: '... we got problems updating data', title: 'Uh oh!', timeout: 5000})
           })
       } else {
-        axios.post('https://hapi-blog.herokuapp.com/v1/articles', obj)
+        articleService.create(obj)
           .then(response => {
             this.$Progress.finish()
             this.articleId = response.data.id

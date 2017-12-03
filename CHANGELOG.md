@@ -3,6 +3,7 @@ All notable changes to this project will be documented in this file.
 
 ## Unreleased
 - Fixed article content images experience
+- Added service request layer
 - Added short URL support for article sharing
 - Added particles background
 

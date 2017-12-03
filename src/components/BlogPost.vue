@@ -68,12 +68,12 @@
 </template>
 
 <script>
-import axios from 'axios'
 import VueMarkdown from 'vue-markdown'
 import VueDisqus from 'vue-disqus/VueDisqus.vue'
 import Popper from 'vue-popperjs'
 import 'vue-popperjs/dist/css/vue-popper.css'
 import router from '../router'
+import service from '../services/BlogService'
 
 export default {
   name: 'blog-post',
@@ -90,7 +90,7 @@ export default {
   beforeMount () {
     if (this.post) {
       this.$Progress.start()
-      axios.get('https://hapi-blog.herokuapp.com/v1/articles?key=' + this.post)
+      service.articleByKey(this.post)
         .then(response => {
           this.article = response.data
           document.title = this.article.title + ' <@' + this.article.author.alias + '>'

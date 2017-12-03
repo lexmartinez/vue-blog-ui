@@ -36,7 +36,7 @@
 
 <script>
 import BlogNav from './BlogNav'
-import axios from 'axios'
+import service from '../services/AuthService'
 import Vue from 'vue'
 import router from '../router'
 import VueNotifications from 'vue-notifications'
@@ -74,7 +74,7 @@ export default {
     },
     toLogin () {
       this.$Progress.start()
-      axios.post('https://hapi-blog.herokuapp.com/v1/auth', {username: this.username, password: this.password})
+      service.login({username: this.username, password: this.password})
         .then(response => {
           Vue.localStorage.set('auth.token', response.data.token)
           this.$Progress.finish()

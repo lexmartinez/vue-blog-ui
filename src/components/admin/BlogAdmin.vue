@@ -33,7 +33,7 @@
 <script>
 import Vue from 'vue'
 import router from '../../router/index'
-import axios from 'axios'
+import service from '@/services/AuthService'
 import BlogTags from './BlogTags'
 import BlogAuthors from './BlogAuthors'
 import BlogArticles from './BlogArticles'
@@ -50,7 +50,7 @@ export default {
   methods: {
     logout () {
       this.$Progress.start()
-      axios.delete(`https://hapi-blog.herokuapp.com/v1/auth/${Vue.localStorage.get('auth.token')}`)
+      service.logout(Vue.localStorage.get('auth.token'))
         .then(response => {
           Vue.localStorage.remove('auth.token')
           this.$Progress.finish()

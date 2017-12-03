@@ -52,7 +52,7 @@
 </template>
 
 <script>
-  import axios from 'axios'
+  import service from '@/services/BlogService'
   import VueNotifications from 'vue-notifications'
   import BlogArticle from './BlogArticle'
 
@@ -70,7 +70,7 @@
     methods: {
       load () {
         this.$Progress.start()
-        axios.get('https://hapi-blog.herokuapp.com/v1/articles')
+        service.getArticles()
           .then(response => {
             this.$Progress.finish()
             this.articles = response.data
@@ -95,7 +95,7 @@
       },
       deleteData () {
         this.$Progress.start()
-        axios.delete('https://hapi-blog.herokuapp.com/v1/articles/' + this.article.id)
+        service.delete(this.article.id)
           .then(response => {
             this.$Progress.finish()
             this.$modal.hide('delete-modal')

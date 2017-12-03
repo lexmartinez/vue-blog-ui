@@ -77,7 +77,7 @@
 </template>
 
 <script>
-  import axios from 'axios'
+  import service from '@/services/AuthorService'
   import VueNotifications from 'vue-notifications'
 
   export default {
@@ -92,7 +92,7 @@
     methods: {
       load () {
         this.$Progress.start()
-        axios.get('https://hapi-blog.herokuapp.com/v1/authors')
+        service.list()
           .then(response => {
             this.$Progress.finish()
             this.authors = response.data
@@ -124,7 +124,7 @@
           this.author.twitter = null
         }
         if (this.author.id) {
-          axios.put('https://hapi-blog.herokuapp.com/v1/authors/' + this.author.id, this.author)
+          service.update(this.author.id, this.author)
             .then(response => {
               this.$Progress.finish()
               this.$modal.hide('detail-modal')
@@ -136,7 +136,7 @@
               this.showErrorMsg({message: '... we got problems updating data', title: 'Uh oh!', timeout: 5000})
             })
         } else {
-          axios.post('https://hapi-blog.herokuapp.com/v1/authors', this.author)
+          service.create(this.author)
             .then(response => {
               this.$Progress.finish()
               this.$modal.hide('detail-modal')
@@ -151,7 +151,7 @@
       },
       deleteData () {
         this.$Progress.start()
-        axios.delete('https://hapi-blog.herokuapp.com/v1/authors/' + this.author.id)
+        service.delete(this.author.id)
           .then(response => {
             this.$Progress.finish()
             this.$modal.hide('delete-modal')
