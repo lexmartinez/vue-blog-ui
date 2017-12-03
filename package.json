@@ -22,6 +22,7 @@
     "vue-markdown": "^2.2.4",
     "vue-moment-jalaali": "^2.0.0",
     "vue-notifications": "^0.9.0",
+    "vue-particles": "^1.0.9",
     "vue-popperjs": "^1.2.5",
     "vue-progressbar": "^0.7.3",
     "vue-router": "^3.0.1",

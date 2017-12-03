@@ -6,6 +6,7 @@ import VueProgressBar from 'vue-progressbar'
 import VueLocalStorage from 'vue-localstorage'
 import VModal from 'vue-js-modal'
 import {Tabs, Tab} from 'vue-tabs-component'
+import VueParticles from 'vue-particles'
 
 console.info('%c', 'line-height:48px;padding:18px 150px;background:url(\'https://lexmartinez.com/static/vue-snip-by.png\') center / contain no-repeat;')
 
@@ -14,6 +15,7 @@ Vue.use(VueLocalStorage)
 Vue.use(VModal)
 Vue.component('tabs', Tabs)
 Vue.component('tab', Tab)
+Vue.use(VueParticles)
 Vue.use(VueProgressBar, {
   color: '#26B9BF',
   failedColor: '#CA0303',

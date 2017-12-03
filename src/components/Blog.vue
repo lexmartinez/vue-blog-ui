@@ -4,6 +4,22 @@
     <blog-feed :filters="filters" v-if="!post"/>
     <blog-post :post="post" v-if="post"/>
     <blog-footer/>
+    <div style="position:fixed; top:0; left: 0; width: 100%; z-index:-5; height: 100%">
+      <vue-particles
+        color="#898989"
+        :particleOpacity="0.7"
+        :particlesNumber="80"
+        shapeType="circle"
+        :particleSize="4"
+        linesColor="#898989"
+        :linesWidth="1"
+        :lineLinked="true"
+        :lineOpacity="0.4"
+        :linesDistance="150"
+        :moveSpeed="0.7"
+      >
+      </vue-particles>
+    </div>
   </main>
 </template>
 

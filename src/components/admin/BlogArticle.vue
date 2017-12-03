@@ -23,14 +23,19 @@
             <p style="text-align: justify;">TITLE: <input type="text" v-model="article.title"></p>
           </div>
           <div style="width:48%; float:right; margin-left:4%">
-            <p style="text-align: justify;">ABSTRACT:  <textarea v-model="article.abstract" style="resize: vertical" rows="4"/></p>
+            <p style="text-align: justify;">ABSTRACT:  <textarea v-model="article.abstract" style="resize: vertical" rows="7"/></p>
           </div>
 
           <div style="width:48%; float:left">
             <p style="text-align: justify;">IMAGE: <input type="text" v-model="article.imageUrl"></p>
           </div>
 
-          <p style="text-align: justify;" v-if="articleId">TAGS: <v-select multiple :options="tags" :label="'name'" :value.sync="tagList"></v-select></p>
+          <div style="width:48%; float:left">
+            <p style="text-align: justify;">SHORT URL: <input type="text" v-model="article.shortUrl"></p>
+          </div>
+
+
+          <p style="text-align: justify;" v-if="articleId"><br/>TAGS: <v-select multiple :options="tags" :label="'name'" :value.sync="tagList"></v-select></p>
 
         </div>
       </header>
@@ -187,8 +192,9 @@ export default {
         title: this.article.title,
         key: this.article.key,
         abstract: this.article.abstract,
-        content: this.article.content || 'content 123',
+        content: this.article.content,
         imageUrl: this.article.imageUrl,
+        shortUrl: this.article.shortUrl,
         author_id: this.author,
         tags: this.tagList
       }

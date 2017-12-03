@@ -3763,3 +3763,7 @@ header.admin-header > nav.links > ul > li > a.active{
 .v-select input[type="search"] {
   font-size: 12pt !important;
 }
+
+.article-content img {
+  width: 100%;
+}

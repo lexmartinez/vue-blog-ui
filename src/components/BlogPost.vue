@@ -25,7 +25,7 @@
               </span>
             </popper>
           <span class="sharebox">
-            <social-sharing :url="getShareURL('https://lexmartinez.com/read/' + article.key)" :title="article.title + ' <@' + article.author.alias + '>'" inline-template>
+            <social-sharing :url="article.shortUrl" :title="article.title + ' <@' + article.author.alias + '>'" inline-template>
               <div>
                 Share :
                 <network network="facebook">
@@ -56,7 +56,7 @@
         </ul>
       </footer>
       <p style="text-align: justify">{{article.abstract}}</p>
-      <p><vue-markdown :source="article.content"></vue-markdown></p>
+      <div class="article-content"><vue-markdown :source="article.content"></vue-markdown></div>
       <footer style="border-top: solid 1px rgba(160, 160, 160, 0.3);">
         <br/>
         <div style="width: 100%; margin-top: 20px">
@@ -85,11 +85,6 @@ export default {
     return {
       article: {},
       notFound: false
-    }
-  },
-  methods: {
-    getShareURL: (url) => {
-      return url
     }
   },
   beforeMount () {

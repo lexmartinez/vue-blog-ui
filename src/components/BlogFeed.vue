@@ -28,7 +28,7 @@
               </popper>
 
               <span class="sharebox">
-            <social-sharing :url="getShareURL('https://lexmartinez.com/read/' + post.key)" :title="post.title + ' <@' + post.author.alias + '>'" inline-template>
+            <social-sharing :url="post.shortUrl" :title="post.title + ' <@' + post.author.alias + '>'" inline-template>
               <div>
                 Share :
                 <network network="facebook">
@@ -126,11 +126,6 @@
       },
       showErrorMsg: {
         type: VueNotifications.types.error
-      }
-    },
-    methods: {
-      getShareURL: (url) => {
-        return url
       }
     },
     created () {

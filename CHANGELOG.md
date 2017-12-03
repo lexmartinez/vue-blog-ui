@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## Unreleased
+- Fixed article content images experience
+- Added short URL support for article sharing
+- Added particles background
+
 ## 0.0.1 (2017-12-01)
 - Added main feed list component
 - Added article component
