@@ -25,7 +25,7 @@
               </span>
             </popper>
           <span class="sharebox">
-            <social-sharing :url="'https://lexmartinez.com/read/' + article.key" :title="article.title + ' <@' + article.author.alias + '>'" inline-template>
+            <social-sharing :url="getShareURL('https://lexmartinez.com/read/' + article.key)" :title="article.title + ' <@' + article.author.alias + '>'" inline-template>
               <div>
                 Share :
                 <network network="facebook">
@@ -85,6 +85,11 @@ export default {
     return {
       article: {},
       notFound: false
+    }
+  },
+  methods: {
+    getShareURL: (url) => {
+      return url
     }
   },
   beforeMount () {
