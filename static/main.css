@@ -3767,3 +3767,7 @@ header.admin-header > nav.links > ul > li > a.active{
 .article-content img {
   width: 100%;
 }
+
+code {
+  color: #454545 !important;
+}
