@@ -46,7 +46,7 @@
             <textarea v-model="article.content" rows="20"></textarea>
           </tab>
           <tab name="PREVIEW">
-            <p><vue-markdown :source="article.content"></vue-markdown></p>
+            <div class="article-content"><vue-markdown :source="article.content"></vue-markdown></div>
           </tab>
         </tabs>
       </div>
