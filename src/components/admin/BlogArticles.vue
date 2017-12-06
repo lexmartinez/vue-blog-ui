@@ -26,7 +26,7 @@
         <tbody>
         <tr v-for="article in articles">
           <td>{{article.id}}</td>
-          <td><a :href="'http://lexmartinez.com/read/' + article.key" target="_blank">{{article.title}}</a></td>
+          <td><a :href="'https://lexmartinez.com/read/' + article.key" target="_blank">{{article.title}}</a></td>
           <td>{{article.author.name}} &nbsp; &lt;&#064;{{article.author.alias}}&gt;</td>
           <td style="text-align: center"><i class="fa fa-check-square-o" v-if="article.publishedAt"></i></td>
           <td style="text-align: center">
