@@ -1,8 +1,9 @@
 <?php
 $article = [];
 $url = $_SERVER['REQUEST_URI'];
+$tags = '';
 
-if(strpos($url, '/read/') !== false){
+if (strpos($url, '/read/') !== false) {
 
   $key = str_replace("/read/", "", $url);
 
@@ -18,15 +19,20 @@ if(strpos($url, '/read/') !== false){
   }else{
     $article = json_decode($response);
   }
+
+  foreach($article->{'tags'} as $item){
+    $tags = $tags . $item -> {'name'} .',';
+  }
+  $tags = rtrim($tags, ',');
   print_r('<head><meta name="twitter:card" content="summary" />
 <meta name="twitter:site" content="lexmartinez.com" />
 <meta name="twitter:title" content="'. $article->{'title'} . '" />
-<meta name="twitter:card" content="summary">
+<meta name="description" content="'. $article->{'abstract'} . '" />
 <meta name="twitter:description" content="'.$article->{'abstract'}.'" />
 <meta name="twitter:image" content="'. $article->{'imageUrl'} . '" />
-<meta name="twitter:image:src" content="'. $article->{'imageUrl'} . '">
-<meta name=twitter:text:title content="'. $article->{'title'} . '">
-<meta name="description" content="'.$article->{'abstract'}.'" />
+<meta name="twitter:image:src" content="'. $article->{'imageUrl'} . '"/>
+<meta name=twitter:text:title content="'. $article->{'title'} . '"/>
+<meta name="keywords" content="'. $tags .'"/>
 <meta property="og:description" content="'.$article->{'abstract'}.'" />
 <meta property="og:site_name" content="Lex Martinez">
 <meta property="og:type" content="article">
