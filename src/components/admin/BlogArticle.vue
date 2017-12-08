@@ -41,16 +41,27 @@
       </header>
 
       <div>
-        <tabs :options="{ useUrlFragment: false }">
-          <tab name="EDIT CONTENT">
-            <div>
-            <textarea v-model="article.content" rows="20"></textarea>
-            </div>
-          </tab>
-          <tab name="PREVIEW">
-            <div class="article-content"><vue-markdown :source="article.content"></vue-markdown></div>
-          </tab>
-        </tabs>
+        <fullscreen :fullscreen.sync="fullscreen" ref="fullscreen" :background="'#ffffff'">
+          <div v-bind:style="{position:'absolute', right: 20+'px', margin: 4+'px', marginTop:(fullscreen?4+'px':-30+'px')}">
+            <a class="button small" style=" cursor: pointer; padding-top: 4px"  @click="publishModal" v-if="!article.publishedAt && articleId"><i class="fa fa-cloud-upload fa-2x"></i></a>
+            <a class="button small" style=" cursor: pointer; padding-top: 4px"  @click="unpublishModal" v-if="article.publishedAt && articleId"><i class="fa fa-cloud-download fa-2x"></i></a>
+            <a @click="toggle" class="button small" style="cursor: pointer; padding-top: 4px"><i class="fa fa-arrows-alt fa-2x"></i></a>
+            <a class="button small" style=" cursor: pointer; padding-top: 4px"  @click="saveData"><i class="fa fa-floppy-o fa-2x"></i></a>
+            <a class="button small" style=" cursor: pointer; padding-top: 4px"  @click="cancelModal"><i class="fa fa-times fa-2x"></i></a>
+          </div>
+          <div>
+            <tabs :options="{ useUrlFragment: false }">
+              <tab name="EDIT CONTENT">
+                <div>
+                  <textarea v-model="article.content" rows="20"></textarea>
+                </div>
+              </tab>
+              <tab name="PREVIEW">
+                <div class="article-content"><vue-markdown :source="article.content"></vue-markdown></div>
+              </tab>
+            </tabs>
+          </div>
+        </fullscreen>
       </div>
 
       <modal name="publish-modal" :height="'auto'" :adaptive="true">
@@ -96,22 +107,27 @@ import authorService from '@/services/AuthorService'
 import VueNotifications from 'vue-notifications'
 import VueMarkdown from 'vue-markdown'
 import vSelect from 'vue-select'
+import Fullscreen from 'vue-fullscreen/src/component.vue'
 
 export default {
   name: 'blog-article',
   resource: 'BlogArticle',
   props: { article: Object },
-  components: {VueMarkdown, vSelect},
+  components: {VueMarkdown, vSelect, Fullscreen},
   data () {
     return {
       authors: [],
       tags: [],
       author: {},
       tagList: [],
-      articleId: undefined
+      articleId: undefined,
+      fullscreen: false
     }
   },
   methods: {
+    toggle () {
+      this.$refs['fullscreen'].toggle()
+    },
     getTags () {
       this.$Progress.start()
       tagService.list()

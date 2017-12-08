@@ -8,6 +8,7 @@ import VModal from 'vue-js-modal'
 import {Tabs, Tab} from 'vue-tabs-component'
 import VueParticles from 'vue-particles'
 import VuePrism from 'vue-prism'
+import fullscreen from 'vue-fullscreen'
 
 console.info('%c', 'line-height:48px;padding:18px 150px;background:url(\'https://lexmartinez.com/static/vue-snip-by.png\') center / contain no-repeat;')
 
@@ -18,6 +19,7 @@ Vue.component('tabs', Tabs)
 Vue.component('tab', Tab)
 Vue.use(VueParticles)
 Vue.use(VuePrism)
+Vue.use(fullscreen)
 Vue.use(VueProgressBar, {
   color: '#26B9BF',
   failedColor: '#CA0303',
