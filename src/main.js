@@ -5,7 +5,6 @@ import SocialSharing from 'vue-social-sharing'
 import VueProgressBar from 'vue-progressbar'
 import VueLocalStorage from 'vue-localstorage'
 import VModal from 'vue-js-modal'
-import VueHighlightJS from 'vue-highlightjs'
 import {Tabs, Tab} from 'vue-tabs-component'
 import VueParticles from 'vue-particles'
 import VuePrism from 'vue-prism'
@@ -15,7 +14,6 @@ console.info('%c', 'line-height:48px;padding:18px 150px;background:url(\'https:/
 Vue.use(SocialSharing)
 Vue.use(VueLocalStorage)
 Vue.use(VModal)
-Vue.use(VueHighlightJS)
 Vue.component('tabs', Tabs)
 Vue.component('tab', Tab)
 Vue.use(VueParticles)
