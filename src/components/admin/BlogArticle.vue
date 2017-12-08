@@ -43,7 +43,9 @@
       <div>
         <tabs :options="{ useUrlFragment: false }">
           <tab name="EDIT CONTENT">
+            <div>
             <textarea v-model="article.content" rows="20"></textarea>
+            </div>
           </tab>
           <tab name="PREVIEW">
             <div class="article-content"><vue-markdown :source="article.content"></vue-markdown></div>
