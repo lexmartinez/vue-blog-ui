@@ -14,6 +14,7 @@ after_success:
   - "curl --ftp-create-dirs -T ./dist/static/favicon.png -u $FTP_USER:$FTP_PASSWORD ftp://$FTP_HOST/static/"
   - "curl --ftp-create-dirs -T ./dist/static/vue-snip-by.png -u $FTP_USER:$FTP_PASSWORD ftp://$FTP_HOST/static/"
   - "curl --ftp-create-dirs -T ./dist/static/main.css -u $FTP_USER:$FTP_PASSWORD ftp://$FTP_HOST/static/"
+  - "curl --ftp-create-dirs -T ./dist/static/prism.css -u $FTP_USER:$FTP_PASSWORD ftp://$FTP_HOST/static/"
   - "find ./dist/static/css -name '*' -type f -exec curl -u $FTP_USER:$FTP_PASSWORD --ftp-create-dirs -T {} ftp://$FTP_HOST/static/css/ \\;"
   - "find ./dist/static/js -name '*' -type f -exec curl -u $FTP_USER:$FTP_PASSWORD --ftp-create-dirs -T {} ftp://$FTP_HOST/static/js/ \\;"
 
