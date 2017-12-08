@@ -56,7 +56,7 @@
         </ul>
       </footer>
       <p style="text-align: justify">{{article.abstract}}</p>
-      <div class="article-content"><vue-markdown :source="article.content"></vue-markdown></div>
+      <div class="article-content"><vue-markdown :source="article.content" :anchorAttributes="{target: '_blank'}"></vue-markdown></div>
       <footer style="border-top: solid 1px rgba(160, 160, 160, 0.3);">
         <br/>
         <div style="width: 100%; margin-top: 20px">
