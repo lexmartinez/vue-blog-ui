@@ -33,7 +33,7 @@
       </tbody>
     </table>
 
-    <modal name="detail-modal" :height="360" :adaptive="true">
+    <modal name="detail-modal" :height="'auto'" :adaptive="true">
       <div style="margin:30px">
         <h2>Tag Detail</h2>
         <p style="text-align: justify;">ID: <input type="text" v-model="tag.id" readonly></p>
@@ -45,7 +45,7 @@
       </div>
     </modal>
 
-    <modal name="delete-modal"  :height="200" :adaptive="true">
+    <modal name="delete-modal" :height="'auto'" :adaptive="true">
       <div style="margin:30px">
         <h2>Delete Tag</h2>
         <p style="text-align: center;">Are you sure you want delete this item?</p>

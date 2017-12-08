@@ -51,7 +51,7 @@
         </tabs>
       </div>
 
-      <modal name="publish-modal"  :height="200" :adaptive="true">
+      <modal name="publish-modal" :height="'auto'" :adaptive="true">
         <div style="margin:30px">
           <h2>Publish Article</h2>
           <p style="text-align: center;">Unsaved changes won't be published. Do you want to continue?</p>
@@ -62,7 +62,7 @@
         </div>
       </modal>
 
-      <modal name="unpublish-modal"  :height="200" :adaptive="true">
+      <modal name="unpublish-modal" :height="'auto'" :adaptive="true">
         <div style="margin:30px">
           <h2>Unpublish Article</h2>
           <p style="text-align: center;">This action put the article offline. Do you want to continue?</p>
@@ -73,7 +73,7 @@
         </div>
       </modal>
 
-      <modal name="cancel-modal"  :height="200" :adaptive="true">
+      <modal name="cancel-modal" :height="'auto'" :adaptive="true">
         <div style="margin:30px">
           <h2>Close Article</h2>
           <p style="text-align: center;">Unsaved changes will be lost. Do you want to continue?</p>
