@@ -16,8 +16,14 @@
     <table>
       <thead>
       <tr>
-        <th style="width: 200px;">ID</th>
-        <th>NAME</th>
+        <th style="width: 200px;">
+          <a style="cursor: pointer"  @click="setColumn('id')">ID</a>
+          <a style="cursor: pointer; margin-left: 20px"  @click="setOrder(order==='ASC'?'DESC':'ASC')" v-if="column==='id'"><i class="fa" :class="{ 'fa-caret-down': order==='ASC', 'fa-caret-up': order==='DESC' }" aria-hidden="true"></i></a>
+        </th>
+        <th>
+          <a style="cursor: pointer"  @click="setColumn('name')">NAME</a>
+          <a style="cursor: pointer; margin-left: 20px"  @click="setOrder(order==='ASC'?'DESC':'ASC')" v-if="column==='name'"><i class="fa" :class="{ 'fa-caret-down': order==='ASC', 'fa-caret-up': order==='DESC' }" aria-hidden="true"></i></a>
+        </th>
         <th style="width: 300px; text-align: center">ACTIONS</th>
       </tr>
       </thead>
@@ -78,13 +84,15 @@ export default {
       tag: {},
       total: 0,
       limit: 10,
-      offset: 0
+      offset: 0,
+      order: 'ASC',
+      column: 'name'
     }
   },
   methods: {
     load () {
       this.$Progress.start()
-      service.page(this.offset, this.limit)
+      service.page(this.offset, this.limit, this.column, this.order)
         .then(response => {
           this.$Progress.finish()
           this.tags = response.data
@@ -114,6 +122,14 @@ export default {
     deleteModal (obj) {
       this.tag = obj
       this.$modal.show('delete-modal')
+    },
+    setColumn (column) {
+      this.column = column
+      this.load()
+    },
+    setOrder (order) {
+      this.order = order
+      this.load()
     },
     closeModal () {
       this.tag = {}

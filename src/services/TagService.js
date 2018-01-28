@@ -12,14 +12,14 @@ export default {
   list: () => {
     return client.get(endpoint)
   },
-  page: (offset, limit) => {
+  page: (offset, limit, sortBy, order) => {
     let url = endpoint
     if (limit && offset) {
       url = url + '?limit=' + limit + '&offset=' + offset
     } else if (limit) {
       url = url + '?limit=' + limit
     }
-    return client.get(url)
+    return client.get(url + '&sort_by=' + (sortBy || 'name') + '&sort_order=' + (order || 'ASC'))
   },
   create: (tag) => {
     return client.post(endpoint, tag)
