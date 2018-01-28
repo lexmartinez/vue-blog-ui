@@ -61,6 +61,11 @@
           </ul>
         </footer>
       </article>
+      <div style="text-align: center">
+        <a class="button" style="cursor: pointer; background-color: #fff"  @click="previous()"><i class="fa fa-chevron-left fa-lg"></i> New Entries </a>
+        <a class="button" style="cursor: pointer; background-color: #fff"  @click="next()">Older Entries <i class="fa fa-chevron-right fa-lg"></i> </a>
+      </div>
+      <br/>
     </div>
     <div v-if="!(posts || []).length">
       <article v-if="loading" style="width: 100%; height: 300px; vertical-align: middle; text-align: center">
@@ -110,7 +115,10 @@
     data () {
       return {
         posts: [],
-        loading: false
+        loading: false,
+        total: 0,
+        limit: 3,
+        offset: 0
       }
     },
 
@@ -128,24 +136,44 @@
         type: VueNotifications.types.error
       }
     },
-    created () {
-      this.$Progress.start()
-      this.loading = true
-      let tag
-      if (this.filters && this.filters.tag) {
-        tag = this.filters.tag
+    methods: {
+      load () {
+        this.$Progress.start()
+        this.loading = true
+        let tag
+        if (this.filters && this.filters.tag) {
+          tag = this.filters.tag
+        }
+        service.getArticles(tag, this.offset, this.limit)
+          .then(response => {
+            this.$Progress.finish()
+            this.loading = false
+            this.posts = response.data
+            this.total = Number(response.headers['x-total-rows'])
+          })
+          .catch(e => {
+            this.$Progress.fail()
+            this.loading = false
+            this.showErrorMsg({message: '... we got problems fetching the articles', title: 'Uh oh!', timeout: 5000})
+          })
+      },
+      next () {
+        if ((this.offset + this.limit) < this.total) {
+          this.offset = this.offset + this.limit
+          this.load()
+        }
+      },
+      previous () {
+        if (this.offset > 0) {
+          this.offset = this.offset - this.limit
+          this.load()
+        }
       }
-      service.getArticles(tag)
-        .then(response => {
-          this.$Progress.finish()
-          this.loading = false
-          this.posts = response.data
-        })
-        .catch(e => {
-          this.$Progress.fail()
-          this.loading = false
-          this.showErrorMsg({message: '... we got problems fetching the articles', title: 'Uh oh!', timeout: 5000})
-        })
+    },
+    created () {
+      this.limit = 3
+      this.offset = 0
+      this.load()
     }
   }
 </script>

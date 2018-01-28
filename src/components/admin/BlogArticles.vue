@@ -36,6 +36,11 @@
         </tr>
         </tbody>
       </table>
+      <div style="text-align: right">
+        <a class="button" style="cursor: pointer"  @click="previous()"><i class="fa fa-chevron-left fa-lg"></i> Previous </a>
+        <a class="button" style="cursor: pointer"  @click="next()">Next <i class="fa fa-chevron-right fa-lg"></i> </a>
+      </div>
+
       <modal name="delete-modal" :height="'auto'" :adaptive="true">
         <div style="margin:30px">
           <h2>Delete Article</h2>
@@ -64,21 +69,37 @@
       return {
         articles: [],
         article: {},
-        edit: false
+        edit: false,
+        total: 0,
+        limit: 10,
+        offset: 0
       }
     },
     methods: {
       load () {
         this.$Progress.start()
-        service.getArticles()
+        service.page(this.offset, this.limit)
           .then(response => {
             this.$Progress.finish()
             this.articles = response.data
+            this.total = Number(response.headers['x-total-rows'])
           })
           .catch(e => {
             this.$Progress.fail()
             this.showErrorMsg({message: '... we got problems fetching list', title: 'Uh oh!', timeout: 5000})
           })
+      },
+      next () {
+        if ((this.offset + this.limit) < this.total) {
+          this.offset = this.offset + this.limit
+          this.load()
+        }
+      },
+      previous () {
+        if (this.offset > 0) {
+          this.offset = this.offset - this.limit
+          this.load()
+        }
       },
       detailModal (obj) {
         this.article = JSON.parse(JSON.stringify(obj))
@@ -123,6 +144,8 @@
       }
     },
     created () {
+      this.limit = 10
+      this.offset = 0
       this.load()
     }
   }
