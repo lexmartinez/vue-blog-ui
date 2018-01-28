@@ -12,6 +12,9 @@ export default {
   list: () => {
     return client.get(endpoint)
   },
+  page: (sortBy, order) => {
+    return client.get(endpoint + '?sort_by=' + (sortBy || 'name') + '&sort_order=' + (order || 'ASC'))
+  },
   create: (author) => {
     return client.post(endpoint, author)
   },

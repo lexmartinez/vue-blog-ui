@@ -16,10 +16,15 @@
       <table>
         <thead>
         <tr>
-          <th style="width: 200px;">ID</th>
+          <th style="width: 200px;">
+            <a style="cursor: pointer"  @click="setColumn('id')">ID</a>
+            <a style="cursor: pointer; margin-left: 20px"  @click="setOrder(order==='ASC'?'DESC':'ASC')" v-if="column==='id'"><i class="fa" :class="{ 'fa-caret-down': order==='ASC', 'fa-caret-up': order==='DESC' }" aria-hidden="true"></i></a>
+          </th>
           <th></th>
-          <th>ALIAS</th>
-          <th>NAME</th>
+          <th><a style="cursor: pointer"  @click="setColumn('alias')">ALIAS</a>
+            <a style="cursor: pointer; margin-left: 20px"  @click="setOrder(order==='ASC'?'DESC':'ASC')" v-if="column==='alias'"><i class="fa" :class="{ 'fa-caret-down': order==='ASC', 'fa-caret-up': order==='DESC' }" aria-hidden="true"></i></a></th>
+          <th><a style="cursor: pointer"  @click="setColumn('name')">NAME</a>
+            <a style="cursor: pointer; margin-left: 20px"  @click="setOrder(order==='ASC'?'DESC':'ASC')" v-if="column==='name'"><i class="fa" :class="{ 'fa-caret-down': order==='ASC', 'fa-caret-up': order==='DESC' }" aria-hidden="true"></i></a></th>
           <th style="width: 300px; text-align: center">ACTIONS</th>
         </tr>
         </thead>
@@ -86,13 +91,15 @@
     data () {
       return {
         authors: [],
-        author: {}
+        author: {},
+        order: 'ASC',
+        column: 'name'
       }
     },
     methods: {
       load () {
         this.$Progress.start()
-        service.list()
+        service.page(this.column, this.order)
           .then(response => {
             this.$Progress.finish()
             this.authors = response.data
@@ -101,6 +108,14 @@
             this.$Progress.fail()
             this.showErrorMsg({message: '... we got problems fetching list', title: 'Uh oh!', timeout: 5000})
           })
+      },
+      setColumn (column) {
+        this.column = column
+        this.load()
+      },
+      setOrder (order) {
+        this.order = order
+        this.load()
       },
       detailModal (obj) {
         this.author = JSON.parse(JSON.stringify(obj))
