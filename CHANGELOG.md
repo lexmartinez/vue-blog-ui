@@ -2,13 +2,7 @@
 All notable changes to this project will be documented in this file.
 
 ## Unreleased
-- Fixed article content images experience
-- Added service request layer
-- Added short URL support for article sharing
-- Added particles background
-- Added autoHeight decorator for modals
-- Added syntax highlighter for code blocks
-- Added fullscreen view for article editor
+...
 
 ## 0.0.1 (2017-12-01)
 - Added main feed list component
@@ -26,3 +20,10 @@ All notable changes to this project will be documented in this file.
 - Added pagination and sorting on authors component
 - Added pagination articles component
 - Added pagination on main feed
+- Fixed article content images experience
+- Added service request layer
+- Added short URL support for article sharing
+- Added particles background
+- Added autoHeight decorator for modals
+- Added syntax highlighter for code blocks
+- Added fullscreen view for article editor
