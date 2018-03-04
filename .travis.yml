@@ -9,8 +9,8 @@ before_script:
 script:
   - npm test & npm run build
 after_success:
-  - "curl --ftp-create-dirs -T ./dist/index.html -u $FTP_USER:$FTP_PASSWORD ftp://$FTP_HOST/blog"
-  - "curl --ftp-create-dirs -T ./dist/static/post.php -u $FTP_USER:$FTP_PASSWORD ftp://$FTP_HOST/blog"
+  - "curl --ftp-create-dirs -T ./dist/index.html -u $FTP_USER:$FTP_PASSWORD ftp://$FTP_HOST/blog/"
+  - "curl --ftp-create-dirs -T ./dist/static/post.php -u $FTP_USER:$FTP_PASSWORD ftp://$FTP_HOST/blog/"
   - "curl --ftp-create-dirs -T ./dist/static/favicon.png -u $FTP_USER:$FTP_PASSWORD ftp://$FTP_HOST/blog/static/"
   - "curl --ftp-create-dirs -T ./dist/static/vue-snip-by.png -u $FTP_USER:$FTP_PASSWORD ftp://$FTP_HOST/blog/static/"
   - "curl --ftp-create-dirs -T ./dist/static/main.css -u $FTP_USER:$FTP_PASSWORD ftp://$FTP_HOST/blog/static/"
