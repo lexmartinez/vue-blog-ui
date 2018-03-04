@@ -4,7 +4,7 @@
       <div>
         <!-- Header -->
         <header id="header" class="admin-header">
-          <h1><router-link :to="'/admin'"><img src="/static/favicon.png" style="height:20px; vertical-align: middle; margin-top:-5px"> Lex Mart&iacute;nez</router-link>
+          <h1><router-link :to="'/admin'"><img src="/blog/static/favicon.png" style="height:20px; vertical-align: middle; margin-top:-5px"> Lex Mart&iacute;nez</router-link>
           </h1>
           <nav class="links">
             <ul>

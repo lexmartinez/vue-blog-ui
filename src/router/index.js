@@ -12,11 +12,12 @@ Vue.use(Router)
 const router = new Router({
   mode: 'history',
   linkActiveClass: 'active',
-  routes: [{
-    path: '/',
-    name: 'feed',
-    component: Blog
-  }, {
+  routes: [
+    {
+      path: '/blog',
+      name: 'feed',
+      component: Blog
+    }, {
   //
   //   path: '/tag/:tag',
   //   name: 'tag',
@@ -24,23 +25,23 @@ const router = new Router({
   //   component: Blog
   // },
   //  {
-    path: '/read/:post',
-    name: 'post',
-    props: true,
-    component: Blog
-  }, {
-    path: '/admin',
-    name: 'admin',
-    component: BlogAdmin
-  }, {
-    path: '/admin/login',
-    name: 'login',
-    component: BlogLogin
-  }, {
-    path: '*',
-    name: 'notfound',
-    component: Blog404
-  }]
+      path: '/read/:post',
+      name: 'post',
+      props: true,
+      component: Blog
+    }, {
+      path: '/admin',
+      name: 'admin',
+      component: BlogAdmin
+    }, {
+      path: '/admin/login',
+      name: 'login',
+      component: BlogLogin
+    }, {
+      path: '*',
+      name: 'notfound',
+      component: Blog404
+    }]
 })
 
 router.beforeEach((to, from, next) => {

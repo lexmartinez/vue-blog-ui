@@ -38,12 +38,12 @@ if (strpos($url, '/read/') !== false) {
 <meta property="og:type" content="article">
 <meta property="og:title" content="'. $article->{'title'} . '">
 <meta property="og:image" content="'. $article->{'imageUrl'} . '">
-<meta property="og:image:alt" content="https://lexmartinez.com/static/favicon.png">
+<meta property="og:image:alt" content="https://lexmartinez.com/blog/static/favicon.png">
 <meta property="og:url" content="https://lexmartinez.com">
-<link rel="shortcut icon" type="image/png" href="/static/favicon.png"/>
-    <link rel="apple-touch-icon" sizes="180x180" href="/static/favicon.png">
-    <link rel="icon" type="image/png" href="/static/favicon.png" sizes="32x32">
-    <link rel="stylesheet" type="text/css" href="/static/main.css">
+<link rel="shortcut icon" type="image/png" href="/blog/static/favicon.png"/>
+    <link rel="apple-touch-icon" sizes="180x180" href="/blog/static/favicon.png">
+    <link rel="icon" type="image/png" href="/blog/static/favicon.png" sizes="32x32">
+    <link rel="stylesheet" type="text/css" href="/blog/static/main.css">
     <style>
         .sharebox i {
             margin-top:15px;

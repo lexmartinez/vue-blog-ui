@@ -19,7 +19,7 @@
         <footer>
           <ul class="stats" style="width:100%"></ul>
           <ul class="actions" style="float:right !important;">
-            <li style="cursor:pointer"> <router-link :to="'/'" class="button big">GO HOME</router-link></li>
+            <li style="cursor:pointer"> <router-link :to="'/blog'" class="button big">GO HOME</router-link></li>
           </ul>
         </footer>
       </article>
