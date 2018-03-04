@@ -10,7 +10,7 @@ import VueParticles from 'vue-particles'
 import VuePrism from 'vue-prism'
 import fullscreen from 'vue-fullscreen'
 
-console.info('%c', 'line-height:48px;padding:18px 150px;background:url(\'https://lexmartinez.com/static/vue-snip-by.png\') center / contain no-repeat;')
+console.info('%c', 'line-height:48px;padding:18px 150px;background:url(\'https://lexmartinez.com/blog/static/vue-snip-by.png\') center / contain no-repeat;')
 
 Vue.use(SocialSharing)
 Vue.use(VueLocalStorage)
