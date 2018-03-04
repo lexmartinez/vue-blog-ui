@@ -8,7 +8,7 @@
 <br/><br/>
 :boat: A blogging client UI built on VueJS <br/>
 
-Simple and powerful blogging site, created as VueJS study case with with purpose to be my website/blog using [hapi-blog](https://github.com/lexmartinez/hapi-blog) as core engine.
+Simple and powerful blogging site, created as VueJS study case with with purpose to be my blog using [hapi-blog](https://github.com/lexmartinez/hapi-blog) as core engine.
 
 
 ### Quick start
