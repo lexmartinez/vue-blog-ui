@@ -43,7 +43,7 @@
           <h1>About Me</h1>
         </header>
         <p style="text-align: center">
-          Hi, I'm Lex Mart&iacute;nez! <strong>@lexmartinez</strong><br/> Full-stack developer based in Medellín, CO, specialized in building web/mobile apps. Mobile Developer SSR at <a href="https://www.almundo.com/" target="_blank">Almundo.com</a> .
+          Hi, I'm Lex Mart&iacute;nez! <strong>@lexmartinez</strong><br/> Full-stack developer based in Medellín, CO, specialized in building web/mobile apps. Mobile Developer SSR at <a href="https://www.almundo.com/" target="_blank">Almundo</a> .
           Guitar enthusiast 🤘
         </p>
         <p style="text-align: center">Find me on &nbsp;<a class="fa fa-github-alt" href="https://github.com/lexmartinez" target="_blank"></a> &nbsp;
