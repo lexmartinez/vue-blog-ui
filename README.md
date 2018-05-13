@@ -1,10 +1,7 @@
 # vue-blog-ui
-[![Build Status](https://travis-ci.org/lexmartinez/vue-blog-ui.svg?branch=master)](https://travis-ci.org/lexmartinez/vue-blog-ui)
-[![NodeJS version](https://img.shields.io/badge/node-v7.10.1-green.svg)](https://nodejs.org/es/)
-[![NPM version](https://img.shields.io/badge/npm-v4.2.0-red.svg)](https://www.npmjs.com/)
-[![vueJS version](https://img.shields.io/badge/vueJS-v2.9.1-green.svg)](https://vuejs.org/)
-[![GitHub license](https://img.shields.io/github/license/lexmartinez/vue-blog-ui.svg)](https://github.com/lexmartinez/vue-blog-ui/blob/master/LICENSE.md)
-[![Last version](https://img.shields.io/badge/vue--blog--ui-v1.0.0-lightgrey.svg)](https://github.com/lexmartinez/vue-blog-ui/blob/master/CHANGELOG.md)
+[![Build Status](https://img.shields.io/travis/lexmartinez/vue-blog-ui/master.svg?style=for-the-badge)](https://travis-ci.org/lexmartinez/vue-blog-ui)
+[![GitHub license](https://img.shields.io/github/license/lexmartinez/vue-blog-ui.svg?style=for-the-badge)](https://github.com/lexmartinez/vue-blog-ui/blob/master/LICENSE.md)
+[![Last version](https://img.shields.io/badge/version-v1.0.0-blue.svg?style=for-the-badge)](https://github.com/lexmartinez/vue-blog-ui/blob/master/CHANGELOG.md)
 <br/><br/>
 :boat: A blogging client UI built on VueJS <br/>
 
